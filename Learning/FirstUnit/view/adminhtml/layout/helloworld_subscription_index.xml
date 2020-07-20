@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+<!--        xsi:naNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">-->
+
+<!--    <body>-->
+<!--        <referenceContainer name="content">-->
+<!--            <block class="Learning\FirstUnit\Block\Adminhtml\Subscription" name="adminhtml.block.helloworld.subscription.container">-->
+<!--                <block class="Learning\FirstUnit\Block\Adminhtml\Subscription\Grid" name="adminhtml.block.helloworld.subscription.grid" as="grid"/>-->
+<!--            </block>-->
+<!--        </referenceContainer>-->
+
+<!--    </body>-->
+
+<!--</config>-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:naNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+        <body>
+            <referenceContainer name="content">
+                <uiComponent name="learning_firstunit_subscription_listing"/>
+            </referenceContainer>
+        </body>
+</page>

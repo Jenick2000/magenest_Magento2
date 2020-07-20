@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="adminhtml_customer_save_after">
+        <observer name="change_firstname_customer" instance="Magenest\Movie\Observer\ChangeFirstNameCustomerObserver"></observer>
+    </event>
+    <event name="movie_save">
+        <observer name="set_rating_movie_save" instance="Magenest\Movie\Observer\SetRatingMovieObserver"></observer>
+    </event>
+    <event name="admin_system_config_changed_section_movie">
+        <observer name="change_value_text_field_jen_test" instance="Magenest\Movie\Observer\JenTestChangeValueTextFieldObserver"></observer>
+    </event>
+</config>

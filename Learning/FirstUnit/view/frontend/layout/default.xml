@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View\Layout\etc\page_configuration.xsd">
+    <body>
+        <referenceBlock name="footer_links">
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="helloworld-link">
+                    <arguments >
+                        <argument name="label" translate="true" xsi:type="string">hello world landingge</argument>
+                        <argument name="path" xsi:type="string">helloworld/index/index</argument>
+                    </arguments>
+            </block>
+            <block class="Magento\Framework\View\Element\Html\Link\Current" name="author-link">
+                <arguments>
+                    <argument name="label" translate="true" xsi:type="string">Jenick author</argument>
+                    <argument xsi:type="string" name="path">jenick</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+
+</page>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View\Layout\etc\page_configuration.xsd">
+    <head>
+        <title> Jenick Page</title>
+    </head>
+    <body>
+<!--        <referenceBlock name="wishlist_sidebar" remove="true"/>-->
+        <referenceContainer name="content">
+            <block class="Learning\FirstUnit\Block\Jenickpage"  name="jenickpage" template="Learning_FirstUnit::jenickpage.phtml" />
+        </referenceContainer>
+    </body>
+</page>

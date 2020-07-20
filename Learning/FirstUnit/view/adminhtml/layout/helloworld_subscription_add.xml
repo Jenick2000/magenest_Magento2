@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:naNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>-->
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="learning_firstunit_subscription_add"/>
+<!--            <block class="Magento\Framework\View\Element\Messages" name="messages" as="messages" template="Learning_FirstUnit::component/toolbar/buttons.phtml"/>-->
+        </referenceContainer>
+    </body>
+</page>

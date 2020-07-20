@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Module_Config\etc\system_file.xsd">
+    <system>
+        <tab id="Learning" translate="label" sortOrder="500">
+            <label>Learning</label>
+        </tab>
+        <tab id="Jenick" translate="label" sortOrder="501">
+            <label>Jenick</label>
+        </tab>
+        <section id="helloworld" translate="label" type="text" sortOrder="100" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
+            <label>Hello World</label>
+            <tab>Learning</tab>
+            <resource>Learning_FirstUnit::config_helloworld</resource>
+            <group id="hellopage" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" >
+                <label>HelloWorld page settings</label>
+                <field id="is_enabled" translate="label" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" >
+                    <label>Is Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="header_title" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Header title</label>
+                </field>
+                <field id="source_model_test" translate="label" type="select"
+                       sortOrder="30" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Source model test</label>
+                    <source_model>\Learning\FirstUnit\Model\Config\Source\Relation</source_model>
+                </field>
+            </group>
+        </section>
+
+        <section id="test" translate="label" type="text" sortOrder="101" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>test</label>
+            <tab>Jenick</tab>
+            <resource>Learning_FirstUnit::config_helloworld</resource>
+            <group id="testpage" translate="label" type="text" showInStore="1" showInWebsite="1" showInDefault="1" sortOrder="2">
+                <label>Test settings</label>
+                <field id="test_text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Sample text</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

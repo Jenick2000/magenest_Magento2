@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      layout="2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View\Layout\etc\page_configuration.xsd" >
+    <head>
+        <title>The Movie Best </title>
+
+    </head>
+    <body>
+        <referenceBlock name="catalog.compare.sidebar" remove="true" />
+        <referenceBlock name="wishlist_sidebar" remove="true"/>
+        <referenceContainer name="content">
+            <block class="Magenest\Movie\Block\Movie\Movie" name="show_movie" template="Magenest_Movie::showMovies.phtml" />
+        </referenceContainer>
+
+    </body>
+</page>

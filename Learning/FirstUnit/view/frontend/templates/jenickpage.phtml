@@ -1,0 +1,18 @@
+<style>
+    .complete{
+        color: #1edb1e;
+    }
+    .pending {
+        color: #2cc8dc;
+    }
+    .canceled{
+        color: red;
+    }
+</style>
+
+<h3>List subscribers</h3>
+<ul>
+    <?php foreach ($block->getSubscriptions() as $sub) { ?>
+        <li> <?php echo $sub['firstname'] ?> <i>Status:</i> <span class="<?php echo $sub['status']  ?> "><?php echo $sub['status'] ?> </span> </li>
+    <?php } ?>
+</ul>

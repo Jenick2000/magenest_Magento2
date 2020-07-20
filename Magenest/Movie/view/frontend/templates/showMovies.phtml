@@ -1,0 +1,50 @@
+<h3> List movie host</h3>
+
+<div class="well">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name Movie</th>
+            <th>Discription</th>
+            <th>Director</th>
+            <th>Actor</th>
+            <th style="width: 36px;"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php $i = 1; ?>
+        <?php  foreach ($block->AllMovie() as $movie) { ?>
+            <tr>
+                <td> <?php echo $i++ ?></td>
+                <td> <?php echo $movie->getName() ?> </td>
+                <td><?php echo $movie->getDescription() ?></td>
+                <td>
+                    <?php foreach ($block->directorOfMovie($movie->getDirectorId()) as $dirctor) {
+                        echo $dirctor->getname();
+                     }?>
+                </td>
+                <td>
+                    <?php
+                    $actors = $block->actorOfMovie($movie->getMovieId());
+                    if(!$actors) echo 'Not Actor';
+
+                    foreach ( $actors as $key=>$value) {
+
+                        if($key < count($actors)){
+                            echo $value->getName(). ', ';
+                        }else if( $key == count($actors)){
+                            echo $value->getName();
+                        }
+                     }?>
+
+                </td>
+            </tr>
+
+        <?php } ?>
+
+
+
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,18 @@
+
+<script>
+    require([
+        'jquery',
+        'prototype',
+    ], function(jQuery){
+        function reloadPage() {
+            location.reload();
+        }
+
+        jQuery('#btn_id').click(function () {
+            reloadPage();
+           // alert("ji")
+        });
+    });
+</script>
+
+<?php echo $block->getButtonHtml() ?>

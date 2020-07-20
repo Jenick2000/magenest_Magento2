@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager\etc\config.xsd">
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_movie_movie_listing_data_source" xsi:type="string">Magenest\Movie\Model\ResourceModel\Movie\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magenest\Movie\Model\ResourceModel\Movie\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_movie</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Movie</argument>
+        </arguments>
+    </virtualType>
+
+<!--    data source for director-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument  name="collections" xsi:type="array">
+                <item name="magenest_movie_director_listing_data_source" xsi:type="string">Magenest\Movie\Model\ResourceModel\Director\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magenest\Movie\Model\ResourceModel\Director\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_director</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Director</argument>
+        </arguments>
+    </virtualType>
+
+    <!--    data source for actor-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument  name="collections" xsi:type="array">
+                <item name="magenest_movie_actor_listing_data_source" xsi:type="string">Magenest\Movie\Model\ResourceModel\Actor\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Magenest\Movie\Model\ResourceModel\Actor\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_actor</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Actor</argument>
+        </arguments>
+    </virtualType>
+
+
+<!--    for join table in grid-->
+<!--    <virtualType name="Magenest\Movie\Model\ResourceModel\Movie\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">-->
+<!--        <arguments>-->
+<!--            <argument name="mainTable" xsi:type="string">magenest_movie</argument>-->
+<!--            <argument name="eventPrefix" xsi:type="string">magenest_movie_grid_collection</argument>-->
+<!--            <argument name="eventObject" xsi:type="string">magenest_movie_collection</argument>-->
+<!--            <argument name="resourceModel" xsi:type="string">Magenest\Movie\Model\ResourceModel\Movie</argument>-->
+<!--        </arguments>-->
+<!--    </virtualType>-->
+<!--    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">-->
+<!--        <arguments>-->
+<!--            <argument name="collections" xsi:type="array">-->
+<!--                &lt;!&ndash;data provider name which used in grid ui component file &ndash;&gt;-->
+<!--                <item name="magenest_movie_movie_listing_data_source" xsi:type="string">Magenest\Movie\Model\ResourceModel\Movie\Grid\Collection</item>-->
+<!--            </argument>-->
+<!--        </arguments>-->
+<!--    </type>-->
+<!--    </type>-->
+
+
+<!--    plugin change picture and name of product in miniCart -->
+<type name="Magento\Checkout\CustomerData\AbstractItem">
+    <plugin name="Magenest_Movie::changeInfoProduct" type="Magenest\Movie\Plugin\Cart\ChangeInforProduct"></plugin>
+</type>
+</config>

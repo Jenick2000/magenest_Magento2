@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:ect/crontab.xsd">
+
+<group id="default">
+    <job name="helloworld_check_subscriptions" instance="Learning\FirstUnit\Model\Cron" method="CheckSubscriptions">
+        <schedule>30 13 * * *</schedule>
+    </job>
+</group>
+</config>
