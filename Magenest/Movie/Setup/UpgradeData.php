@@ -20,7 +20,7 @@ class UpgradeData implements UpgradeDataInterface {
 
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        if(version_compare($context->getVersion(), '1.1.2') < 0) {
+        if(version_compare($context->getVersion(), '1.1.3') < 0) {
 
 
             $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
@@ -29,7 +29,7 @@ class UpgradeData implements UpgradeDataInterface {
                 'logo_image',
                 [
                     'label' => 'Logo Image',
-                    'type' => 'static',
+                    'type' => 'varchar',
                     'input'  => 'image',
                     'required' => false,
                     'visible' => true,
