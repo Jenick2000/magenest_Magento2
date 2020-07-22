@@ -1,0 +1,100 @@
+<style>
+    .form-Login {
+        width: 80%;
+        height: 300px;
+        background: #1fd544;
+        text-align: center;
+        margin: auto;
+    }
+    .form-content{
+        width: max-content;
+        height: 200px;
+        background: white;
+        margin: auto;
+        top: 150px;
+    }
+    .form-content form input{
+        margin-bottom: 15px;
+    }
+</style>
+<div>
+
+    <button id="click-hi">Open Modal</button>
+    <button id="login-modal">Open Magento Login Modal</button>
+    <button>Open Custom Login Modal</button>
+</div>
+
+<div id="header-mpdal" style="display:none;">
+    <div class="videoWrapper">
+        <iframe allow="encrypted-media" allowfullscreen="" frameborder="0" gesture="media" height="315" src="https://www.youtube.com/embed/P45AMKIW0ok" width="560">
+        </iframe>
+    </div>
+</div>
+
+<div id="login-model-template" style="display: none">
+    <div class="form-Login">
+        <div class="form-content">
+            <form>
+                <input type="text" placeholder="enter your name">
+                <input type="password" placeholder="password">
+                <button>Login</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            'use strict'
+
+            let options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Hello world',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                },
+                    {
+                        text: $.mage.__('Ok'),
+                        class: '',
+                        click: function () {
+                            this.closeModal(true);
+                        }
+                    }
+                ]
+            };
+
+            let optionLogin = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'Login Modal',
+                buttons: []
+            };
+            let popupLogin =  modal(optionLogin, $('#login-model-template'));
+            let popup = modal(options, $('#header-mpdal'));
+
+            $("#click-hi").on('click',function(){
+                $("#header-mpdal").modal("openModal");
+            });
+
+            $('#login-modal').on('click', function() {
+                $('#login-model-template').modal('openModal');
+            });
+        }
+    );
+</script>
