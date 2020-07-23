@@ -39,10 +39,11 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider {
     public function getIdActors($movie_id) {
        $actors =  $this->_actorCollectionFactory->create();
        $actors->addFieldToFilter('movie_id', $movie_id);
-       $actors->getData();
+       $actorData = $actors->getData();
        $items = '';
-       foreach ($actors as $index=>$actor) {
-           if($index == count($actors)  ){
+
+       foreach ($actorData as $key=>$actor) {
+           if($key == count($actors) - 1 ){
                $items.= $actor['actor_id'];
            }else{
                $items.= $actor['actor_id'].',';

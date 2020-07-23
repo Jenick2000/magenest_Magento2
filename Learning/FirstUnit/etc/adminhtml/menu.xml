@@ -9,7 +9,9 @@
             sortOrder="40"
             parent="Magento_Backend::marketing"
             resource="Learning_FirstUnit::helloworld"
-        /> <add
+        />
+
+        <add
             id="Learning_FirstUnit::test"
             title="Test"
             module="Learning_FirstUnit"

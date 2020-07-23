@@ -1,0 +1,58 @@
+<style>
+    #catalog {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #catalog td, #catalog th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #catalog tr:nth-child(even){background-color: #f2f2f2;}
+
+    #catalog tr:hover {background-color: #ddd;}
+
+
+</style>
+
+<div class="row " style="margin-top: 50px">
+    <div class="col-m-4">
+        <h4>Numbers of module installed in Magneto (not Magento): <i> <?php echo $block->getFullModuleList() ?></i></h4>
+
+    </div>
+    <div class="col-m-8">
+       <h4> Detail Catalog</h4>
+
+        <table id="catalog">
+            <tr>
+                <th>Catalog</th>
+                <th>Total</th>
+            </tr>
+            <tr>
+                <td> Customers</td>
+                <td><?php echo $block->getAllCustomers() ?></td>
+            </tr>
+            <tr>
+                <td> Products</td>
+                <td><?php echo $block->getAllProducts() ?></td>
+            </tr>
+            <tr>
+                <td> Orders</td>
+                <td><?php echo $block->getAllOrders() ?></td>
+            </tr>
+            <tr>
+                <td> Invoices</td>
+                <td><?php echo $block->getAllInvoices() ?></td>
+            </tr>
+            <tr>
+                <td> CreditMemo</td>
+                <td><?php echo $block->getAllCreditMemo() ?></td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>

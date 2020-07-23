@@ -42,6 +42,7 @@ class Save extends \Magento\Framework\App\Action\Action {
            $movie->setName($data['name']);
            $movie->setDescription($data['description']);
            $movie->setDirectorId((int)$data['director_id']);
+           $movie->setRating((int)$data['rating']);
            $movie->save();
 
            $movie_id = $data['movie_id'];
@@ -75,7 +76,7 @@ class Save extends \Magento\Framework\App\Action\Action {
                }
            }
            $this->_redirect('magenest/movie/index');
-           $this->messageManager->addSuccessMessage('You saved new movie');
+           $this->messageManager->addSuccessMessage('You saved movie');
        }else{
            $this->addNewMovie();
        }
@@ -89,6 +90,7 @@ class Save extends \Magento\Framework\App\Action\Action {
         $movie->setName($data['name']);
         $movie->setDescription($data['description']);
         $movie->setDirectorId((int)$data['director']);
+        $movie->setRating((int)$data['rating']);
         $movie->save();
 
         $movie_id = $movie->getId();

@@ -21,9 +21,11 @@ class SetRatingMovieObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
         $movieData = $observer->getMovie();
-        $movie = $this->movieFactory->create();
-        $movie->load($movieData['movie_id']);
-        $movie->setRating(0);
-        $movie->save();
+        if($movieData['rating'] == '') {
+            $movie = $this->movieFactory->create();
+            $movie->load($movieData['movie_id']);
+            $movie->setRating(0);
+            $movie->save();
+        }
     }
 }

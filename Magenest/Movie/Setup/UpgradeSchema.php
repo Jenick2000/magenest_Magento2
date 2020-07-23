@@ -11,7 +11,7 @@ class UpgradeSchema implements UpgradeSchemaInterface {
     public function upgrade(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         // TODO: Implement upgrade() method.
-        if(version_compare($context->getVersion(), '1.1.1') < 0) {
+        if(version_compare($context->getVersion(), '1.1.7') < 0) {
 
 
 
@@ -72,7 +72,9 @@ class UpgradeSchema implements UpgradeSchemaInterface {
 
 
 //            create table magenest_actor
-//                $table = $setup->getConnection()->newTable($setup->getTable('magenest_actor'))
+
+                $connection = $setup->getConnection();
+//                $table = $connection->newTable($setup->getTable('magenest_actor'))
 //                    ->addColumn(
 //                        'actor_id',
 //                        Table::TYPE_INTEGER,
@@ -88,48 +90,73 @@ class UpgradeSchema implements UpgradeSchemaInterface {
 //                        Table::TYPE_TEXT,
 //                        null
 //                    )->setComment('table actor');
-//                $setup->getConnection()->createTable($table);
+//
+//                $connection->createTable($table);
+                $connection->addIndex(
+                    'magenest_actor',
+                    'name',
+                    [
+                        'name'
+                    ],
+                    \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
+                );
+            $connection->addIndex(
+                'magenest_director',
+                'name',
+                [
+                    'name'
+                ],
+                \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
+            );
+                $connection->addIndex(
+                    'magenest_movie',
+                    'name',
+                    [
+                        'name', 'description'
+                    ],
+                    \Magento\Framework\DB\Adapter\AdapterInterface::INDEX_TYPE_FULLTEXT
+                );
 
 
             // create table magenest_movie_actor
-            $table = $setup->getConnection()->newTable($setup->getTable('magenest_movie_actor'))
-                ->addColumn(
-                    'id',
-                    Table::TYPE_INTEGER,
-                    null,
-                    [
-                        'primary' => true,
-                        'identity' => true,
-                        'nullable' => false,
-                        'unsigned' => true]
-                )
-                ->addColumn(
-                    'movie_id',
-                    Table::TYPE_INTEGER,
-                    null,
-                    ['unsigned'=> true, 'nullable' => false]
-                )
-                ->addColumn(
-                    'actor_id',
-                    Table::TYPE_INTEGER,
-                    null,
-                    ['unsigned'=> true, 'nullable' => false]
-                )
-                ->addForeignKey(
-                    $setup->getFkName('magenest_movie_actor', 'movie_id', 'magenest_movie', 'movie_id'),
-                    'movie_id',
-                    $setup->getTable('magenest_movie'),
-                    'movie_id',
-                    Table::ACTION_CASCADE
-                )
-                ->addForeignKey(
-                    $setup->getFkName('magenest_movie_actor', 'actor_id', 'magenest_actor', 'actor_id'),
-                    'actor_id',
-                    $setup->getTable('magenest_actor'),
-                    'actor_id',
-                    Table::ACTION_CASCADE
-                );
-            $setup->getConnection()->createTable($table);
+//            $table = $setup->getConnection()->newTable($setup->getTable('magenest_movie_actor'))
+//                ->addColumn(
+//                    'id',
+//                    Table::TYPE_INTEGER,
+//                    null,
+//                    [
+//                        'primary' => true,
+//                        'identity' => true,
+//                        'nullable' => false,
+//                        'unsigned' => true]
+//                )
+//                ->addColumn(
+//                    'movie_id',
+//                    Table::TYPE_INTEGER,
+//                    null,
+//                    ['unsigned'=> true, 'nullable' => false]
+//                )
+//                ->addColumn(
+//                    'actor_id',
+//                    Table::TYPE_INTEGER,
+//                    null,
+//                    ['unsigned'=> true, 'nullable' => false]
+//                )
+//                ->addForeignKey(
+//                    $setup->getFkName('magenest_movie_actor', 'movie_id', 'magenest_movie', 'movie_id'),
+//                    'movie_id',
+//                    $setup->getTable('magenest_movie'),
+//                    'movie_id',
+//                    Table::ACTION_CASCADE
+//                )
+//                ->addForeignKey(
+//                    $setup->getFkName('magenest_movie_actor', 'actor_id', 'magenest_actor', 'actor_id'),
+//                    'actor_id',
+//                    $setup->getTable('magenest_actor'),
+//                    'actor_id',
+//                    Table::ACTION_CASCADE
+//                );
+//            $setup->getConnection()->createTable($table);
 
         }
     }
