@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magenest\HotelBooking\Model\ResourceModel\Hotel\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">hotel</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\HotelBooking\Model\ResourceModel\Hotel</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="magenest_hotel_grid_listing_data_source" xsi:type="string">Magenest\HotelBooking\Model\ResourceModel\Hotel\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

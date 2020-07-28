@@ -69,6 +69,6 @@
 
 <!--    plugin change picture and name of product in miniCart -->
 <type name="Magento\Checkout\CustomerData\AbstractItem">
-    <plugin name="Magenest_Movie::changeInfoProduct" type="Magenest\Movie\Plugin\Cart\ChangeInforProduct"></plugin>
+    <plugin name="Magenest_Movie::changeInfoProduct" type="Magenest\Movie\Plugin\Cart\ChangeInforProduct" />
 </type>
 </config>

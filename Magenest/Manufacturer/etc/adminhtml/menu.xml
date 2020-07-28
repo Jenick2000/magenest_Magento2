@@ -1,0 +1,22 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="Magenest_Manufacturer::magenest_manufacturer"
+                title="Manufactorer Product"
+                module="Magenest_Manufacturer"
+                sortOrder="60"
+                parent="Magenest_Movie::magenest_movie"
+                resource="Magenest_Manufacturer::magenest_manufacturer"
+        />
+        <add
+                id="Magenest_Manufacturer::manufacturer"
+                title="Manufactorer"
+                module="Magenest_Manufacturer"
+                sortOrder="60"
+                parent="Magenest_Manufacturer::magenest_manufacturer"
+                action="magenest/manufacturer/index"
+                resource="Magenest_Manufacturer::manufacturer"
+        />
+    </menu>
+</config>

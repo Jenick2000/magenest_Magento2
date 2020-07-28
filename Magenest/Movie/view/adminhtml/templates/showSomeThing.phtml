@@ -10,20 +10,25 @@
         padding: 8px;
     }
 
-    #catalog tr:nth-child(even){background-color: #f2f2f2;}
+    #catalog tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 
-    #catalog tr:hover {background-color: #ddd;}
+    #catalog tr:hover {
+        background-color: #ddd;
+    }
 
 
 </style>
 
 <div class="row " style="margin-top: 50px">
     <div class="col-m-4">
-        <h4>Numbers of module installed in Magneto (not Magento): <i> <?php echo $block->getFullModuleList() ?></i></h4>
+        <h4>Numbers of module installed in Magneto (not Magento): <i> <?php echo $block->getFullModuleList() ?></i>
+        </h4>
 
     </div>
     <div class="col-m-8">
-       <h4> Detail Catalog</h4>
+        <h4> Detail Catalog</h4>
 
         <table id="catalog">
             <tr>
