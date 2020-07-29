@@ -12,7 +12,27 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="magenest_hotel_grid_listing_data_source" xsi:type="string">Magenest\HotelBooking\Model\ResourceModel\Hotel\Grid\Collection</item>
+                <item name="magenest_hotel_grid_listing_data_source" xsi:type="string">
+                    Magenest\HotelBooking\Model\ResourceModel\Hotel\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!--    custom collecction-->
+    <virtualType name="Magenest\HotelBooking\Model\ResourceModel\CustomOrder\CollectionCustom"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sales_order_grid</argument>
+            <!--                <argument name="resourceModel" xsi:type="string">Magento\Sales\Model\ResourceModel\Order</argument>-->
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="order_custom_listing_data_source" xsi:type="string">
+                    Magenest\HotelBooking\Model\ResourceModel\CustomOrder\CollectionCustom
+                </item>
             </argument>
         </arguments>
     </type>

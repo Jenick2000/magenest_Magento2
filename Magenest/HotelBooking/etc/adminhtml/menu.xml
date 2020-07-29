@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add
+                id="Magenest_HotelBooking::booking_management"
+                title="Booking Management"
+                module="Magenest_HotelBooking"
+                sortOrder="70"
+                parent="Magenest_Movie::magenest_movie"
+                resource="Magenest_HotelBooking::booking_management"
+        />
+        <add
+                id="Magenest_HotelBooking::hotel_order"
+                title="Order"
+                module="Magenest_HotelBooking"
+                sortOrder="80"
+                parent="Magenest_HotelBooking::booking_management"
+                action="magenest/hotelorder/index"
+                resource="Magenest_HotelBooking::hotel_order"
+        />
+        <add
+                id="Magenest_HotelBooking::hotel_list"
+                title="Hotel"
+                module="Magenest_HotelBooking"
+                sortOrder="90"
+                parent="Magenest_HotelBooking::booking_management"
+                action="magenest/hotel/index"
+                resource="Magenest_HotelBooking::hotel_list"
+        />
+    </menu>
+</config>

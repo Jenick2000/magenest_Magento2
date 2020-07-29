@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="gamer_account_list" resource="default" engine="innodb"
+           comment="Gamer account list Table for CyberZone">
+        <column xsi:type="int" name="id" padding="11" unsigned="true" nullable="false" identity="true"
+                comment="ID account"/>
+        <column xsi:type="int" name="product_id" default="0" comment="Product ID"/>
+        <column xsi:type="varchar" name="account_name" nullable="false" comment="Name gamer"/>
+        <column xsi:type="varchar" name="password" nullable="false" comment="password"/>
+        <column xsi:type="int" name="hour" comment="thime hour buy"/>
+        <column xsi:type="datetime" name="created_at" on_update="false" default="CURRENT_TIMESTAMP"
+                comment=" created at"/>
+        <column xsi:type="datetime" name="updated_at" on_update="true" default="CURRENT_TIMESTAMP"
+                comment="updated at"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="catalog_product_entity" indexType="btree">
+            <column name="product_id"/>
+        </index>
+        <index referenceId="gamer_account_list" indexType="fulltext">
+            <column name="account_name"/>
+        </index>
+    </table>
+    <!--    table room extra option-->
+    <table name="room_extra_option" resource="default" engine="innodb">
+        <column name="id" xsi:type="int" nullable="false" identity="true" unsigned="true" padding="11"/>
+        <column name="product_id" xsi:type="int"/>
+        <column name="number_pc" xsi:type="int" default="0"/>
+        <column name="address" xsi:type="varchar"/>
+        <column name="food_price" xsi:type="int"/>
+        <column name="drink_price" xsi:type="int"/>
+        <column xsi:type="datetime" name="created_at" on_update="false" default="CURRENT_TIMESTAMP"
+                comment=" created at"/>
+        <column xsi:type="datetime" name="updated_at" on_update="true" default="CURRENT_TIMESTAMP"
+                comment="updated at"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <index referenceId="catalog_product_entity" indexType="btree">
+            <column name="product_id"/>
+        </index>
+    </table>
+</schema>

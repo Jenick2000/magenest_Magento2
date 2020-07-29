@@ -1,0 +1,58 @@
+<?php if ($block->checkIsHotel()) { ?>
+    <div>
+        <span>Show <i style="cursor: pointer;text-decoration: underline" id="showDetailHotel">detail</i> hotel</span>
+    </div>
+    <div id="detail-hotel-model-template" style="display: none">
+        <h3>Hotel Information</h3>
+        <div>
+        <span><b>Location: </b>
+            <?= $block->getHotel()['location_street'] . ', ' . $block->getHotel()['location_state']
+            . ', ' . $block->getHotel()['location_city'] . ', ' . $block->getHotel()['location_country']
+            ?>
+        </span><br>
+            <span><b>Phone:  </b>  <?= $block->getHotel()['contact_phone'] ?></span><br>
+            <div>
+                <b>Available room:</b><br>
+                <span><b>room single: </b>  <?= $block->getHotel()['available_single'] ?></span><br>
+                <span><b>room double: </b>  <?= $block->getHotel()['available_double'] ?></span><br>
+                <span><b>room triple: </b>  <?= $block->getHotel()['available_triple'] ?></span>
+            </div>
+        </div>
+    </div>
+    <script>
+        require(
+            [
+                'jquery',
+                'Magento_Ui/js/modal/modal'
+            ],
+            function (
+                $,
+                modal
+            ) {
+                'use strict'
+
+                let options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: '<?= $block->getHotel()['hotel_name'] ?>',
+                    buttons: [{
+                        text: $.mage.__('Close'),
+                        class: '',
+                        click: function () {
+                            this.closeModal();
+                        }
+                    }
+                    ]
+                };
+
+                let popup = modal(options, $('#detail-hotel-model-template'));
+
+
+                $("#showDetailHotel").on('click', function () {
+                    $("#detail-hotel-model-template").modal("openModal");
+                });
+            }
+        );
+    </script>
+<?php } ?>
