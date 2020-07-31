@@ -27,10 +27,6 @@ class CustomerEntitySave implements ObserverInterface {
 
         $data = $this->request->getPost('nickname');
 
-//        $customer = $observer->getData('customer');
-//        $customer->setCustomAttribute('nickname', $data);
-//        $customer->save();
-
         $customerData = $observer->getData('customer');
         $customerData->setNickName($data);
         $customerData->save();

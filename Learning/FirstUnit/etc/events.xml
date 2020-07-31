@@ -2,10 +2,10 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="helloworld_register_visit">
-        <observer name="register_hellowlorld_visit" instance="Learning\FirstUnit\Observer\RegisterVisitObserver" />
+        <observer name="register_hellowlorld_visit" instance="Learning\FirstUnit\Observer\RegisterVisitObserver"/>
     </event>
 
     <event name="checkout_cart_product_add_after">
-        <observer name="check_cart_qty" instance="Learning\FirstUnit\Observer\CheckCartQtyObserver" />
+        <observer name="check_cart_qty" disabled="true" instance="Learning\FirstUnit\Observer\CheckCartQtyObserver"/>
     </event>
 </config>

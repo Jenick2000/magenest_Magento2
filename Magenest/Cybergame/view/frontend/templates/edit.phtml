@@ -1,0 +1,6 @@
+<div class="field choice is_manager" style="margin-bottom: 15px">
+    <input type="checkbox" name="is_manager" title="<?= $block->escapeHtmlAttr(__("I'm a cyber manager")) ?>"
+        <?= $block->IsManager() ? 'checked="checked"' : '' ?> value="1"
+           id="is_manager" class="checkbox">
+    <label for="is_manager" class="label"><span><?= $block->escapeHtml(__("I'm a cyber manager")) ?></span></label>
+</div>

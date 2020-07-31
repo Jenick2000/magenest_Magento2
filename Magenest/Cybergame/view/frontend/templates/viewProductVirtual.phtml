@@ -1,0 +1,72 @@
+<?php
+/**
+ *
+ * @var Magenest\Cybergame\Block\RoomOption\Info $block ;
+ */
+
+$roomOption = $block->getRoomExtraOption();
+$product_price = $block->getProduct()['price'];
+?>
+<div>
+    <p>Number PC: <?= $roomOption['number_pc'] ?> </p>
+    <p>Address: <?= $roomOption['address'] ?></p>
+    <p>Food price: <?= $roomOption['food_price'] ?></p>
+    <p>Drink price: <?= $roomOption['drink_price'] ?></p>
+
+    <div class="field required">
+        <label for="account_name" class="label"><span>Account Name</span></label>
+        <div class="control">
+            <input type="text" id="account_name" style="width: 50%" name="account_name" class="input-text ">
+        </div>
+    </div>
+    <div style="margin-top: 5px">
+        <span id="not_found" style="color: red"></span>
+        <span id="found_account" style="color: #0a6c9f"></span>
+    </div>
+</div>
+<script>
+    require(['jquery'], function ($) {
+
+        // add field hidden account_name to form
+        $('#product_addtocart_form').append('<input type="hidden" id="account_name_hidden" name="account_name" value=""/>');
+        $('#qty').keyup(function () {
+            let qty = $('#qty').val();
+            let price = '<?= $product_price ?>';
+            $('.price').text('$' + formatMoney(parseInt(price) * qty))
+        })
+
+        $('#account_name').blur(function () {
+            let value = $('#account_name').val();
+            $('#account_name_hidden').val(value);
+            if (value.trim() != '') {
+                $.post("cybergame/room/checkAccount", {account_name: value}, function (result) {
+                    if (result == 0) {
+                        $('#not_found').show();
+                        $('#not_found').text('We will create new account for you. Default password = 1. You should change the password after login')
+                        $('#account_name').keyup(function () {
+                            $('#not_found').hide();
+                        })
+                    } else {
+                        $('#found_account').text('Account was exist in our system. You are buying hour for this acocunt')
+                    }
+                });
+            }
+        });
+
+        function formatMoney(number, decPlaces, decSep, thouSep) {
+            decPlaces = isNaN(decPlaces = Math.abs(decPlaces)) ? 2 : decPlaces,
+                decSep = typeof decSep === "undefined" ? "." : decSep;
+            thouSep = typeof thouSep === "undefined" ? "," : thouSep;
+            var sign = number < 0 ? "-" : "";
+            var i = String(parseInt(number = Math.abs(Number(number) || 0).toFixed(decPlaces)));
+            var j = (j = i.length) > 3 ? j % 3 : 0;
+
+            return sign +
+                (j ? i.substr(0, j) + thouSep : "") +
+                i.substr(j).replace(/(\decSep{3})(?=\decSep)/g, "$1" + thouSep) +
+                (decPlaces ? decSep + Math.abs(number - i).toFixed(decPlaces).slice(2) : "");
+        }
+    })
+
+
+</script>

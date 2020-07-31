@@ -1,0 +1,71 @@
+<?php
+/**
+ * @var \Magenest\Cybergame\Block\RoomOption\Info $block
+ */
+
+$product = $block->getProduct();
+$roomOption = $block->getRoomExtraOption();
+?>
+
+<style>
+    .field {
+        margin-bottom: 8px;
+    }
+</style>
+<form class="form " style="width: 50%;" action="<?= $block->escapeUrl($block->getUrl('cybergame/room/editPost')) ?>"
+      method="post" id="form-validate" enctype="multipart/form-data"
+      data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>" autocomplete="off">
+    <input type="hidden" name="room_id" value="<?= $roomOption['id'] ?>">
+    <div class="field required">
+        <label for="name" class="label"><span>Name</span></label>
+        <div class="control">
+            <input type="text" name="name" value="<?= $product['name'] ?>" title="name of cyzone" disabled="disabled"
+                   class="input-text ">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="price" class="label"><span>Price</span></label>
+        <div class="control">
+            <input type="text" name="price" value="<?php echo $product['price'] ?>"
+                   title="price 1 hour" disabled="disabled" class="input-text ">
+
+        </div>
+    </div>
+    <div class="field required">
+        <label for="number_pc" class="label"><span>Number PC</span></label>
+        <div class="control">
+            <input type="text" name="number_pc" value="<?= $roomOption['number_pc'] ?>"
+                   title="" class="input-text ">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="address" class="label"><span>Address</span></label>
+        <div class="control">
+            <input type="text" name="address" value="<?= $roomOption['address'] ?>" class="input-text ">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="drink_price" class="label"><span>Drink price</span></label>
+        <div class="control">
+            <input type="text" name="drink_price" value="<?= $roomOption['drink_price'] ?>" class="input-text ">
+        </div>
+    </div>
+    <div class="field required">
+        <label for="food_price" class="label"><span>Food price</span></label>
+        <div class="control">
+            <input type="text" name="food_price" value="<?= $roomOption['food_price'] ?>" class="input-text ">
+        </div>
+    </div>
+
+
+    <div class="actions-toolbar" style="margin-top: 50px">
+        <div class="primary">
+            <button type="submit" class="action save primary" title="<?= $block->escapeHtmlAttr(__('Save')) ?>">
+                <span><?= $block->escapeHtml(__('Save')) ?></span></button>
+        </div>
+        <div class="secondary">
+            <a class="action back"
+               href="<?= $block->escapeUrl($block->getBackUrl()) ?>"><span><?= $block->escapeHtml(__('Go back')) ?></span></a>
+        </div>
+    </div>
+</form>

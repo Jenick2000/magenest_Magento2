@@ -21,4 +21,7 @@
         </arguments>
     </type>
 
+    <type name="Magento\Customer\Controller\Account\EditPost">
+        <plugin name="CheckEditManagerAccount" type="Magenest\Cybergame\Plugin\Customer\Edit" />
+    </type>
 </config>

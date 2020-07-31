@@ -1,23 +1,26 @@
-<div class="block block-dashboard-info" style="display: <?php echo $block->checkAvatar()?'block':'none' ?>">
-    <div class="block-title"><strong><?= $block->escapeHtml(__('Account Information With Avatar')) ?></strong></div>
-    <div class="block-content">
-        <div class="box box-information">
-            <strong class="box-title">
-                <span><?= $block->escapeHtml(__('Avatar')) ?></span>
-            </strong>
-            <img src="<?php echo $block->getUrlAvatar() ?>" style="border-radius:50%;margin-left:50px ;width: 140px; height: 140px; display: <?php echo $block->checkAvatar()?'block':'none' ?>">
-            <strong class="box-title" style="display: block;margin-top:50px">
-                <span><?= $block->escapeHtml(__('Contact Information')) ?></span>
-            </strong>
-            <div class="box-content">
-                <p>
-                    <b>Your Name: </b><?= $block->escapeHtml($block->getName()) ?><br>
-                   <b>Email:</b>   <?= $block->escapeHtml($block->getCustomer()->getEmail()) ?><br>
-                    <b>Phone:</b>  <?= $block->escapeHtml($block->getPhone()) ?><br>
-                </p>
-                <?= $block->getChildHtml('customer.account.dashboard.info.extra'); ?>
-            </div>
+<?php if ($block->checkAvatar()) { ?>
+    <div class="block block-dashboard-info" style="display: <?php echo $block->checkAvatar() ? 'block' : 'none' ?>">
+        <div class="block-title"><strong><?= $block->escapeHtml(__('Account Information With Avatar')) ?></strong></div>
+        <div class="block-content">
+            <div class="box box-information">
+                <strong class="box-title">
+                    <span><?= $block->escapeHtml(__('Avatar')) ?></span>
+                </strong>
+                <img src="<?php echo $block->getUrlAvatar() ?>"
+                     style="border-radius:50%;margin-left:50px ;width: 140px; height: 140px; display: <?php echo $block->checkAvatar() ? 'block' : 'none' ?>">
+                <strong class="box-title" style="display: block;margin-top:50px">
+                    <span><?= $block->escapeHtml(__('Contact Information')) ?></span>
+                </strong>
+                <div class="box-content">
+                    <p>
+                        <b>Your Name: </b><?= $block->escapeHtml($block->getName()) ?><br>
+                        <b>Email:</b> <?= $block->escapeHtml($block->getCustomer()->getEmail()) ?><br>
+                        <b>Phone:</b> <?= $block->escapeHtml($block->getPhone()) ?><br>
+                    </p>
+                    <?= $block->getChildHtml('customer.account.dashboard.info.extra'); ?>
+                </div>
 
+            </div>
         </div>
     </div>
-</div>
+<?php } ?>

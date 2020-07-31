@@ -5,7 +5,7 @@ namespace Magenest\Cybergame\Observer;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
 
-class CheckManagerObserver implements ObserverInterface
+class CheckEditManagerObserver implements ObserverInterface
 {
 
     /**
@@ -16,17 +16,15 @@ class CheckManagerObserver implements ObserverInterface
     public function __construct(\Magento\Customer\Api\CustomerRepositoryInterface $customerRepository)
     {
         $this->customerRepository = $customerRepository;
-
     }
 
     public function execute(Observer $observer)
     {
-        $data = $observer->getAccountController();
-        $is_magager = $data->getRequest()->getPost('is_manager');
+
+        $is_magager = $observer->getData('dataPost')->getPost('is_manager');
+        $email = $observer->getData('email');
         if (!empty($is_magager)) {
-            $customerData = $observer->getCustomer();
-            $id = $customerData->getId();
-            $customer = $this->customerRepository->getById($id);
+            $customer = $this->customerRepository->get($email);
             $customer->setCustomAttribute('is_manager', 1);
             $this->customerRepository->save($customer);
         }

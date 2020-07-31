@@ -5,6 +5,9 @@
         <route id="magenest" frontName="magenest">
             <module name="Magenest_Cybergame"/>
         </route>
+        <route id="cybergame" frontName="cybergame">
+            <module name="Magenest_Cybergame"/>
+        </route>
     </router>
 
 </config>

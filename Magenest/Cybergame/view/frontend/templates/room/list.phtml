@@ -1,0 +1,36 @@
+<?php
+/**
+ * @var \Magenest\Cybergame\Block\RoomOption\ListRoom $block
+ */
+?>
+
+<div class="well" style="margin-top: 50px">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Room Name</th>
+            <th>Price</th>
+            <?php if ($block->checkIsManager()) { ?>
+                <th>Action</th>
+            <?php } ?>
+        </tr>
+        </thead>
+        <tbody>
+        <?php $i = 1; ?>
+        <?php foreach ($block->getProductCollection() as $product) { ?>
+            <tr>
+                <td> <?php echo $product['entity_id'] ?></td>
+                <td> <?php echo $product['name'] ?> </td>
+                <td> <?php echo $product['price'] ?> </td>
+                <?php if ($block->checkIsManager()) { ?>
+                    <td><a href="/magento2/cybergame/room/edit/id/<?= $product['entity_id'] ?>">Edit</a></td>
+                <?php } ?>
+            </tr>
+
+        <?php } ?>
+
+
+        </tbody>
+    </table>
+</div>
