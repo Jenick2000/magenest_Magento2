@@ -1,18 +1,25 @@
-
+<?php
+/**
+ * @var Magenest\Movie\Block\System\Config\Button $block
+ */
+?>
 <script>
     require([
         'jquery',
         'prototype',
-    ], function(jQuery){
+    ], function (jQuery) {
         function reloadPage() {
             location.reload();
         }
 
         jQuery('#btn_id').click(function () {
             reloadPage();
-           // alert("ji")
+            // alert("ji")
         });
     });
 </script>
 
 <?php echo $block->getButtonHtml() ?>
+<div>
+    <h1>Helloooo</h1>
+</div>

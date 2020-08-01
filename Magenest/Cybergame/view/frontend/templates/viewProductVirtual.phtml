@@ -38,6 +38,7 @@ $product_price = $block->getProduct()['price'];
         $('#account_name').blur(function () {
             let value = $('#account_name').val();
             $('#account_name_hidden').val(value);
+            $('#found_account').hide();
             if (value.trim() != '') {
                 $.post("cybergame/room/checkAccount", {account_name: value}, function (result) {
                     if (result == 0) {
@@ -47,6 +48,7 @@ $product_price = $block->getProduct()['price'];
                             $('#not_found').hide();
                         })
                     } else {
+                        $('#found_account').show();
                         $('#found_account').text('Account was exist in our system. You are buying hour for this acocunt')
                     }
                 });

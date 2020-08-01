@@ -13,7 +13,8 @@ class Collection extends Action
      */
     protected $test;
 
-    public function __construct(Context $context, \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory, \Magento\Customer\Model\ResourceModel\Customer\CollectionFactory $collectionFactory)
+    public function __construct(Context $context, \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
+                                \Magento\Customer\Model\ResourceModel\Customer\CollectionFactory $collectionFactory)
     {
         $this->subCollectionFactory = $collectionFactory;
         $this->test = $productCollectionFactory;

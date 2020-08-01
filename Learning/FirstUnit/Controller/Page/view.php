@@ -8,20 +8,14 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\View\Result\PageFactory;
 
 
-class view extends  Action{
-
-   // protected $resultJsonFactory;
-    protected $_resultPageFactory;
-    function __construct(Context $context, PageFactory $resultPageFactory)
-    {
-        $this->_resultPageFactory= $resultPageFactory;
-        return parent::__construct($context);
-    }
+class view extends Action
+{
 
     function execute()
     {
         // TODO: Implement execute() method.
-        return $this->_resultPageFactory->create();
-
+        $this->_view->loadLayout();
+        $this->_view->getPage()->getConfig()->getTitle()->prepend('Hello world');
+        $this->_view->renderLayout();
     }
 }

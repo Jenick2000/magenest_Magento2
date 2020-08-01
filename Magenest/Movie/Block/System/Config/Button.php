@@ -1,4 +1,5 @@
 <?php
+
 namespace Magenest\Movie\Block\System\Config;
 
 
@@ -8,12 +9,12 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 
 class Button extends Field
 {
-    protected $_template = 'Magenest_Movie::system/config/button.phtml';
-
+     protected $_template = 'Magenest_Movie::system/config/button.phtml';
     public function __construct(
         Context $context,
         array $data = []
-    ) {
+    )
+    {
         parent::__construct($context, $data);
     }
 
@@ -27,10 +28,12 @@ class Button extends Field
     {
         return $this->_toHtml();
     }
+
     public function getAjaxUrl()
     {
         return $this->getUrl('your action');
     }
+
     public function getButtonHtml()
     {
         $button = $this->getLayout()->createBlock(
