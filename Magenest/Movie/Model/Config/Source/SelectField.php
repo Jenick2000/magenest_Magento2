@@ -9,4 +9,5 @@ class SelectField implements  \Magento\Framework\Option\ArrayInterface{
         // TODO: Implement toOptionArray() method.
         return [['value' => 1, 'label' => __('Show')], ['value' => 0, 'label' => __('Not Show')]];
     }
+
 }

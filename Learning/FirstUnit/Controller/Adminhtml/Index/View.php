@@ -12,10 +12,11 @@ class View extends Action {
         $this->resultPageFactory = $resultPageFactory;
         parent::__construct($context);
     }
-protected function _isAllowed()
-{
-    return $this->_authorization->isAllowed('Learning_FirstUnit::index_view');
-}
+
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Learning_FirstUnit::index_view');
+    }
 
     public function execute()
     {

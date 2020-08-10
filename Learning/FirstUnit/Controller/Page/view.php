@@ -13,9 +13,8 @@ class view extends Action
 
     function execute()
     {
-        // TODO: Implement execute() method.
         $this->_view->loadLayout();
-        $this->_view->getPage()->getConfig()->getTitle()->prepend('Hello world');
+        $this->_view->getPage()->getConfig()->getTitle()->prepend('Who are you ?');
         $this->_view->renderLayout();
     }
 }

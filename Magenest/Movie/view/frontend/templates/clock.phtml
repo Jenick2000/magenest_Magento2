@@ -1,0 +1,51 @@
+<?php
+/**
+ * @var  Magenest\Movie\Block\Clock $block
+ */
+?>
+<style>
+    .clock {
+        position: absolute;
+        left: 45%;
+        border: gray solid;
+        padding: 7px;
+        width: 80px;
+        text-align: center;
+    }
+</style>
+<div>
+    <span class="clock" id="clock"> 00:00:00</span>
+</div>
+<script>
+    require(['jquery'], function ($) {
+        $('#clock').css(
+            {
+                'background': '<?= $block->getConfigBackgroundColor() ?>',
+                'color': '<?= $block->getConfigTitleColor() ?>',
+                'width': '<?= $block->getConfigSizeClock() ?>'
+            }
+        );
+
+    })
+    var now = new Date(<?php echo time() * 1000 ?>);
+
+    function startInterval() {
+        setInterval('updateTime();', 1000);
+    }
+
+    startInterval();//start it right away
+    function updateTime() {
+        var d = new Date();
+        var curr_hour = d.getHours();
+        var curr_min = d.getMinutes();
+        var curr_sec = d.getSeconds();
+        if (curr_hour > 12) curr_hour = curr_hour - 12;
+        if (curr_min < 10) curr_min = '0' + curr_min;
+        if (curr_sec < 10) curr_sec = '0' + curr_sec;
+
+        var clock = document.getElementById('clock');
+        if (clock) {
+            clock.innerHTML = curr_hour + ' : ' + curr_min + ' : ' + curr_sec;
+        }
+    }
+</script>

@@ -1,0 +1,97 @@
+<div data-bind="scope: 'koexample'" style="margin-bottom: 10px">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<div class="widget" id="widgetTest" style="position: relative; height: 250px">
+    <h1>Widget Buttons</h1>
+</div>
+
+<div class="field required">
+    <label for="delivery_time" class="label"><b>Delivery Time</b></label>
+    <div class="control" style="margin-top: 5px">
+        <input type="text" id="delivery_time" style="width: auto" class="input-text ">
+    </div>
+</div>
+<div class="field required">
+    <label for="delivery_time" class="label"><b> Time</b></label>
+    <div class="control" style="margin-top: 5px">
+        <input type="text" id="period_date_start" style="width: auto" class="input-text ">
+    </div>
+</div>
+<script>
+
+    require([
+        'jquery',
+        'mage/translate',
+        'mage/calendar'
+    ], function ($, $t) {
+        // add field hidden delevery time to form
+        $('#product_addtocart_form').append('<input type="hidden" id="delivery_time_hidden" name="delivery_time" value=""/>');
+
+        $('#delivery_time').calendar({
+            changeMonth: true,
+            changeYear: true,
+            showButtonPanel: true,
+            currentText: $t('Go Today'),
+            closeText: $t('Close'),
+            showWeek: true
+        });
+        $("#period_date_start").calendar({
+            dateFormat: "M/d/yy",
+            showsTime: true,
+            timeFormat: "HH:mm:ss",
+            sideBySide: true,
+            closeText: "Done",
+            selectOtherMonths: true,
+            onClose: function (selectedDate) {
+                $("#period_date_end").datepicker("option", "minDate", selectedDate);
+            },
+            minDate: -2, //your input box date value.
+            maxDate: 1
+
+        });
+        $('#delivery_time').on('change', function () {
+            let value = $('#delivery_time').val();
+            $('#delivery_time_hidden').val(value);
+        });
+
+        let button = document.createElement('button');
+        button.style.cssText = "color:green;width: 150px; position:absolute";
+        button.innerText = "Don't click me!";
+        let bodyWidth = $('.widget')[0].clientWidth;
+        let bodyHeight = $('.widget')[0].clientHeight;
+
+
+        button.addEventListener('click', function () {
+            let arr = ['Don\'t click me', 'STOP clicking', 'No Please', 'Haha :))']
+            let i = Math.floor(Math.random() * 4);
+            button.innerText = arr[i];
+
+            let randPosX = Math.floor((Math.random() * bodyWidth));
+            let randPosY = Math.floor((Math.random() * bodyHeight));
+            button.style.top = randPosX + 'px';
+            button.style.left = randPosY + 'px';
+        });
+
+        $('.widget').append(button);
+
+
+    });
+
+
+</script>
+
+<script type="text/x-magento-init">
+        {
+            "*": {
+                "Magento_Ui/js/core/app": {
+                    "components": {
+                        "koexample": {
+                            "component": "Magenest_JuniorLevel/js/knockout-example",
+                            "template" : "Magenest_JuniorLevel/example"
+                        }
+                    }
+                }
+            }
+        }
+
+</script>

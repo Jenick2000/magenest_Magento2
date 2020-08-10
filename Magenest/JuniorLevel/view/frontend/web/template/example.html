@@ -1,0 +1,18 @@
+
+<div class="field">
+    <label class="label"><b>First Name</b></label>
+    <div class="control" style="margin-top: 5px">
+        <input type="text" data-bind="value: firstName" style="width: auto" class="input-text ">
+    </div>
+</div>
+<div class="field">
+    <label class="label"><b>Last Name</b></label>
+    <div class="control" style="margin-top: 5px">
+        <input type="text" data-bind="value: lastName" style="width: auto" class="input-text ">
+    </div>
+</div>
+<div class="field">
+    <label class="label"><i>Full Name : </i>  <b data-bind="text: fullName()"></b></label>
+</div>
+<button data-bind="click: convertToFullName">Convert name to full name</button>
+<button data-bind="click: standardize">Standardize</button>

@@ -1,0 +1,9 @@
+<?php
+/**
+ * @var Magento\Multishipping\Block\Checkout\Link $block
+ */
+$blockObj = $block->getLayout()->createBlock('Magento\Multishipping\Block\Checkout\Link');
+
+?>
+<a class="action multicheckout"
+   href="<?= $block->escapeUrl($blockObj->getCheckoutUrl()) ?>"><span><?= $block->escapeHtml(__('Check Out with Multiple Addresses')) ?></span></a>

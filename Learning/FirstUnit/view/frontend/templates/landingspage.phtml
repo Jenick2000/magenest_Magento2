@@ -1,13 +1,27 @@
+<?php
+/**
+ * @var Learning\FirstUnit\Block\Landingspage $block
+ */
+?>
+
 <h3> Hello Landingspage</h3>
 <p>
     <a href="<?php echo $block->getLandingsUrl() ?>"> Go to Landingspace</a>
 </p>
 <p>
-    <a href="<?php echo $block->getRedirectUrl()?>"> Go to Redirect Url</a>
+    <a href="<?php echo $block->getRedirectUrl() ?>"> Go to Redirect Url</a>
 </p>
-<p> This module is <?php echo $block->getModuleName()?></p>
+<p id="test"> This module is <?php echo $block->getModuleName() ?></p>
 <p>
-    <?php echo __("Test translation")  ?>
-    <br />
+    <?php echo __("Test translation") ?>
+    <br/>
     <?php echo __("dich qua tieng anh") ?>
 </p>
+<script>
+    require(['testjs', 'jquery'], function ($) {
+
+   
+    })
+
+
+</script>

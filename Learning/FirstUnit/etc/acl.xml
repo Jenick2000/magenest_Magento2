@@ -8,19 +8,19 @@
                     <resource id="Learning_FirstUnit::helloworld" title="HelloWorld" sortOrder="40">
                         <resource id="Learning_FirstUnit::index" title="Helloworld Index" sortOrder="45">
                         </resource>
-                        <resource id="Learning_FirstUnit::index_view" title="hellowold view" sortOrder="46" ></resource>
+                        <resource id="Learning_FirstUnit::index_view" title="hellowold view" sortOrder="46"/>
 
-                        <resource id="Learning_FirstUnit::subscription" title="helloworld subscription" sortOrder="47"></resource>
+                        <resource id="Learning_FirstUnit::subscription" title="helloworld subscription" sortOrder="47"/>
                     </resource>
                     <resource id="Learning_FirstUnit::jenick" title="JenickPage" sortOrder="50">
-                        <resource id="Learning_FirstUnit::page" title="Jenick Page_view" sortOrder="55"></resource>
+                        <resource id="Learning_FirstUnit::page" title="Jenick Page_view" sortOrder="55"/>
                     </resource>
                 </resource>
 
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="Learning_FirstUnit::config_helloworld" title="Helloworld Section" > </resource>
+                            <resource id="Learning_FirstUnit::config_helloworld" title="Helloworld Section"/>
                         </resource>
                     </resource>
                 </resource>

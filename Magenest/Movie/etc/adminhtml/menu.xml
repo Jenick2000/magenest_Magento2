@@ -3,6 +3,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 
     <menu>
+
         <add
                 id="Magenest_Movie::magenest_movie"
                 title="Magenest"
@@ -62,6 +63,13 @@
                 parent="Magenest_Movie::magenest_film"
                 resource="Magenest_Movie::director"
         />
-
+        <add id="Magenest_Movie::magenest_countdown" title="CountDown" module="Magenest_Movie" sortOrder="70"
+             resource="Magenest_Movie::magenest_countdown" parent="Magenest_Movie::magenest_movie"/>
+        <add id="Magenest_Movie::magenest_clock" title="Clock" module="Magenest_Movie"
+             parent="Magenest_Movie::magenest_countdown" sortOrder="10" action="dfd/sa"
+             resource="Magenest_Movie::magenest_clock"/>
+        <add id="Magenest_Movie::magenest_clock_config" title="Configuration Clock" module="Magenest_Movie"
+             parent="Magenest_Movie::magenest_countdown" sortOrder="20" action="admin/system_config/edit/section/clock"
+             resource="Magenest_Movie::magenest_clock_config"/>
     </menu>
 </config>

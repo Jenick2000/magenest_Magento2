@@ -1,8 +1,13 @@
-<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">learning_firstunit_subscription_listing.learning_firstunit_subscription_listing_data_source</item>
-            <item name="deps" xsi:type="string">learning_firstunit_subscription_listing.learning_firstunit_subscription_listing_data_source</item>
+            <item name="provider" xsi:type="string">
+                learning_firstunit_subscription_listing.learning_firstunit_subscription_listing_data_source
+            </item>
+            <item name="deps" xsi:type="string">
+                learning_firstunit_subscription_listing.learning_firstunit_subscription_listing_data_source
+            </item>
         </item>
         <item name="spinner" xsi:type="string">spinner_columns</item>
         <item name="buttons" xsi:type="array">
@@ -14,26 +19,24 @@
             </item>
         </item>
     </argument>
-
-    <listingToolbar name="listing_top">
+    <listingToolbar>
         <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-                <item name="sticky" xsi:type="boolean">false</item>
+                <item name="sticky" xsi:type="boolean">true</item>
             </item>
         </argument>
-    </listingToolbar>
-
-    <listingToolbar>
         <bookmark name="bookmarks"/>
         <columnsControls name="columns_controls"/>
-        <filterSearch name="fulltext"  />
-        <filters name="listing_filters" />
+        <filterSearch name="fulltext"/>
+        <filters name="listing_filters"/>
 
     </listingToolbar>
 
-    <dataSource name="nameOfDataSource">
+    <dataSource name="learning_firstunit_subscription_listing_data_source">
         <argument name="dataProvider" xsi:type="configurableObject">
-            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="class" xsi:type="string">
+                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
+            </argument>
             <argument name="name" xsi:type="string">learning_firstunit_subscription_listing_data_source</argument>
             <argument name="primaryFieldName" xsi:type="string">subscription_id</argument>
             <argument name="requestFieldName" xsi:type="string">id</argument>
@@ -70,13 +73,13 @@
         </column>
         <column name="firstname">
             <argument name="data" xsi:type="array">
-                  <item name="editorType" xsi:type="string">text</item>
+                <item name="editorType" xsi:type="string">text</item>
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="editor" xsi:type="array">
-                    <item name="validation" xsi:type="array">
+                        <item name="validation" xsi:type="array">
                             <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
+                        </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">First Name</item>
                 </item>
@@ -84,13 +87,13 @@
         </column>
         <column name="lastname">
             <argument name="data" xsi:type="array">
-                  <item name="editorType" xsi:type="string">text</item>
+                <item name="editorType" xsi:type="string">text</item>
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="editor" xsi:type="array">
-                    <item name="validation" xsi:type="array">
+                        <item name="validation" xsi:type="array">
                             <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
+                        </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Last Name</item>
                 </item>
@@ -98,13 +101,13 @@
         </column>
         <column name="email">
             <argument name="data" xsi:type="array">
-                  <item name="editorType" xsi:type="string">text</item>
+                <item name="editorType" xsi:type="string">text</item>
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="editor" xsi:type="array">
-                    <item name="validation" xsi:type="array">
+                        <item name="validation" xsi:type="array">
                             <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
+                        </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Email</item>
                 </item>
@@ -112,13 +115,13 @@
         </column>
         <column name="status">
             <argument name="data" xsi:type="array">
-                  <item name="editorType" xsi:type="string">text</item>
+                <item name="editorType" xsi:type="string">text</item>
                 <item name="config" xsi:type="array">
                     <item name="filter" xsi:type="string">text</item>
                     <item name="editor" xsi:type="array">
-                    <item name="validation" xsi:type="array">
+                        <item name="validation" xsi:type="array">
                             <item name="required-entry" xsi:type="boolean">true</item>
-                    </item>
+                        </item>
                     </item>
                     <item name="label" xsi:type="string" translate="true">Status</item>
                 </item>
@@ -130,7 +133,6 @@
             </settings>
         </actionsColumn>
     </columns>
-
 
 
 </listing>

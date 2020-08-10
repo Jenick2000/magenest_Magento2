@@ -6,8 +6,8 @@
     <body>
         <referenceContainer name="content">
             <block class="Magenest\Cybergame\Block\RoomOption\Info"
-                    name="room_edit_info_list"
-                    template="Magenest_Cybergame::room/editForm.phtml" cacheable="false"/>
+                   name="room_edit_info_list"
+                   template="Magenest_Cybergame::room/editForm.phtml" cacheable="false"/>
         </referenceContainer>
     </body>
 </page>

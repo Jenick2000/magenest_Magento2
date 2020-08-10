@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc\config.xsd">
-        <default>
-            <helloworld>
-                <hellopage>
-                    <is_enabled>1</is_enabled>
-                    <header_title>Jenick say hi Hello World!</header_title>
-                </hellopage>
-            </helloworld>
-        </default>
+    <default>
+        <helloworld>
+            <hellopage>
+                <is_enabled>1</is_enabled>
+                <header_title>Jenick say hi Hello World!</header_title>
+                <title_test>Jenick say hi from backend !</title_test>
+            </hellopage>
+        </helloworld>
+    </default>
 </config>

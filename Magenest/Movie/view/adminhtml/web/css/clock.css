@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'icomoon';
+    src: url('/../fronts/clock.svg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.admin__menu .item-magenest-movie > a:before {
+    content: '\e900';
+    height: 28px;
+    margin: 0 auto;
+    width: 30px;
+    color: red;
+}
+
+.item-magenest-clock a span {
+    color: red;
+}
+
+.item-magenest-clock-config a span {
+    color: red;
+}

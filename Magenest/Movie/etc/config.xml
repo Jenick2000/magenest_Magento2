@@ -9,5 +9,12 @@
                 <custom_select>1</custom_select>
             </general>
         </Movie>
+        <clock>
+            <clockConfig>
+                <size_clock>100</size_clock>
+                <color_clock>#e4f5f2</color_clock>
+                <text_color_clock>#000000</text_color_clock>
+            </clockConfig>
+        </clock>
     </default>
 </config>

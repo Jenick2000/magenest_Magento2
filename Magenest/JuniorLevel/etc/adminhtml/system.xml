@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="background" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10" translate="label">
+            <label>Background color configuration</label>
+            <tab>Magenest</tab>
+            <resource>Magenest_JuniorLevel::magenest_juniorLevel</resource>
+
+            <group id="config_color" translate="label comment" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Config Color</label>
+                <comment>An additional comment helping users to understand the effect when configuring the fields
+                    defined in this group.
+                </comment>
+
+                <field id="color_option" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Color Option</label>
+                    <comment>This field is an example for a basic yes or no select.</comment>
+                    <tooltip>Usually these kinds of fields are used to enable or disable a given feature. Other fields
+                        might be dependent to this and will only appear if this field is set to yes.
+                    </tooltip>
+                    <frontend_model>Magenest\JuniorLevel\Block\Adminhtml\Form\Field\ColorOption</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

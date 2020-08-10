@@ -1,0 +1,23 @@
+<?php
+/**
+ * @var Magenest\JuniorLevel\Block\Config\BackgroundColor $block
+ */
+$colorOption = $block->getBackgroundColor();
+?>
+<select id="switch" style="width: max-content">
+    <option value="#fff">Default</option>
+    <?php foreach ($colorOption as $option) { ?>
+        <option style="color: <?= $option['color_code'] ?>"
+                value="<?= $option['color_code'] ?>"><?= $option['name_color'] ?></option>
+    <?php } ?>
+</select>
+
+<script>
+
+    require(['jquery'], function ($) {
+        $('#switch').change(function () {
+            let valueColor = $('#switch').find(":selected").val();
+            $('.page-wrapper').css('background', valueColor)
+        })
+    })
+</script>

@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager\etc\config.xsd">
-    <type name="Magento\Catalog\Model\Product" >
-    <plugin name="Learning_FirstUnit::productName" type="Learning\FirstUnit\Plugin\Catalog\ProductAround" sortOrder="1" disabled="true"  />
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="Learning_FirstUnit::productName" type="Learning\FirstUnit\Plugin\Catalog\ProductAround"
+                sortOrder="1" disabled="true"/>
     </type>
     <type name="Learning\FirstUnit\Controller\Index\Example">
-        <plugin name="Learning_FirstUnit::welcome" type="Learning\FirstUnit\Plugin\ExamplePlugin"   />
+        <plugin name="Learning_FirstUnit::welcome" type="Learning\FirstUnit\Plugin\ExamplePlugin"/>
     </type>
     <type name="Learning\FirstUnit\Block\Jenickpage">
-        <plugin name="Learning_FirstUnit::jenickPage" type="Learning\FirstUnit\Plugin\JenickPlugin"  sortOrder="10" disabled="true"/>
-        <plugin name="Learning_FirstUnit::jenickPageB" type="Learning\FirstUnit\Plugin\JenickPluginB" sortOrder="20" disabled="true" />
-        <plugin name="Learning_FirstUnit::jenickPageC" type="Learning\FirstUnit\Plugin\JenickPluginC" sortOrder="30"  disabled="true"/>
+        <plugin name="jenickPage" type="Learning\FirstUnit\Plugin\JenickPlugin" sortOrder="10"
+                disabled="false"/>
+        <plugin name="Learning_FirstUnit::jenickPageB" type="Learning\FirstUnit\Plugin\JenickPluginB" sortOrder="20"
+                disabled="true"/>
+        <plugin name="Learning_FirstUnit::jenickPageC" type="Learning\FirstUnit\Plugin\JenickPluginC" sortOrder="30"
+                disabled="true"/>
     </type>
 
     <type name="Magento\Framework\Console\CommandList">
@@ -27,14 +31,18 @@
     <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="learning_firstunit_subscription_listing_data_source" xsi:type="string">Learning\FirstUnit\Model\ResourceModel\Subscription\Grid\Collection</item>
+                <item name="learning_firstunit_subscription_listing_data_source" xsi:type="string">
+                    subscription_grid_collection
+                </item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Learning\FirstUnit\Model\ResourceModel\Subscription\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <virtualType name="subscription_grid_collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
             <argument name="mainTable" xsi:type="string">learning_firstunit_subscription</argument>
-            <argument name="resourceModel" xsi:type="string">Learning\FirstUnit\Model\ResourceModel\Subscription</argument>
+            <argument name="resourceModel" xsi:type="string">Learning\FirstUnit\Model\ResourceModel\Subscription
+            </argument>
         </arguments>
     </virtualType>
 

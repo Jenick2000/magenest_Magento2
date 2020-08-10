@@ -22,6 +22,14 @@
     </type>
 
     <type name="Magento\Customer\Controller\Account\EditPost">
-        <plugin name="CheckEditManagerAccount" type="Magenest\Cybergame\Plugin\Customer\Edit" />
+        <plugin name="CheckEditManagerAccount" type="Magenest\Cybergame\Plugin\Customer\Edit"/>
+    </type>
+
+    <type name="Magento\ImportExport\Model\Import\SampleFileProvider">
+        <arguments>
+            <argument name="samples" xsi:type="array">
+                <item name="catalog_category_product" xsi:type="string">Magenest_Cybergame</item>
+            </argument>
+        </arguments>
     </type>
 </config>
