@@ -38,8 +38,8 @@ class Subscription extends \Magento\Framework\App\Action\Action
         $subscription->setEmail('ngoca.Lee@example.com');
         $subscription->setMessage('Say hello with Jenick');
         // $subscription->save();
-
-        var_dump($subscription->getData());
+        $test = $this->_objectManager->get('\Magenest\Movie\Model\ResourceModel\Movie\Collection');//get('\Magenest\Movie\Model\ResourceModel\Movie\Collection');
+        var_dump($test->getData());
 
         $this->getResponse()->setBody('sussecc');
     }

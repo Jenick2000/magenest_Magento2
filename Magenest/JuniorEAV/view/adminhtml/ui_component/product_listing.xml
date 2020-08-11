@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="product_columns" class="Magento\Catalog\Ui\Component\Listing\Columns">
+        <column name="example_eav" sortOrder="150"
+                class="Magenest\JuniorEAV\Ui\Component\Product\Listing\Column\ExampleEAV">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Example EAV</label>
+            </settings>
+        </column>
+        <column name="customer_group" sortOrder="160">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="componentDisabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+            <settings>
+                <addField>true</addField>
+                <filter>text</filter>
+                <label translate="true">Customer Group</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

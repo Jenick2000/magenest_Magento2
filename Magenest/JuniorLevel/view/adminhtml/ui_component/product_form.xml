@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <fieldset name="product-details">
+        <field name="time_test" formElement="date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">some_source</item>
+                    <item name="sortOrder" xsi:type="number">210</item>
+                    <item name="component" xsi:type="string">Magenest_JuniorLevel/js/form/element/date</item>
+                </item>
+            </argument>
+            <settings>
+<!--                <validation>-->
+<!--                    <rule name="validate-date" xsi:type="boolean">true</rule>-->
+<!--                </validation>-->
+                <dataType>text</dataType>
+                <label translate="true">Date Example</label>
+                <visible>true</visible>
+                <dataScope>time</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+    <fieldset name="testingproduct">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Testing Group</item>
+                <item name="dataScope" xsi:type="string">data.product</item>
+                <item name="sortOrder" xsi:type="number">1</item>
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="opened" xsi:type="boolean">false</item>
+                <item name="ns" xsi:type="string">product_form</item>
+            </item>
+            <item name="js_config" xsi:type="array">
+                <item name="provider" xsi:type="string">product_form.product_form_data_source</item>
+                <item name="namespace" xsi:type="string">product_form</item>
+            </item>
+        </argument>
+
+        <!--        <container name="testing_group">-->
+        <!--            <argument name="data" xsi:type="array">-->
+        <!--                <item name="config" xsi:type="array">-->
+        <!--                    <item name="sortOrder" xsi:type="number">1</item>-->
+        <!--                </item>-->
+        <!--            </argument>-->
+        <!--            <htmlContent name="html_content">-->
+        <!--                <argument name="block" xsi:type="object">Magenest\JuniorLevel\Block\Adminhtml\Form\Field\Color-->
+        <!--                </argument>-->
+        <!--            </htmlContent>-->
+        <!--        </container>-->
+
+    </fieldset>
+</form>
