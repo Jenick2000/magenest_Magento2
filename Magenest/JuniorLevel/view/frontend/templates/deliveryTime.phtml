@@ -11,12 +11,7 @@
         <input type="text" id="delivery_time" style="width: auto" class="input-text ">
     </div>
 </div>
-<div class="field required">
-    <label for="delivery_time" class="label"><b> Time</b></label>
-    <div class="control" style="margin-top: 5px">
-        <input type="text" id="period_date_start" style="width: auto" class="input-text ">
-    </div>
-</div>
+
 <script>
 
     require([
@@ -34,20 +29,6 @@
             currentText: $t('Go Today'),
             closeText: $t('Close'),
             showWeek: true
-        });
-        $("#period_date_start").calendar({
-            dateFormat: "M/d/yy",
-            showsTime: true,
-            timeFormat: "HH:mm:ss",
-            sideBySide: true,
-            closeText: "Done",
-            selectOtherMonths: true,
-            onClose: function (selectedDate) {
-                $("#period_date_end").datepicker("option", "minDate", selectedDate);
-            },
-            minDate: -2, //your input box date value.
-            maxDate: 1
-
         });
         $('#delivery_time').on('change', function () {
             let value = $('#delivery_time').val();

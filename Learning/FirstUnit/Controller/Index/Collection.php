@@ -11,22 +11,31 @@ class Collection extends Action
     /**
      * @var \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory
      */
-    protected $test;
 
-    public function __construct(Context $context, \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
+    /**
+     * @var \Magento\Catalog\Model\ResourceModel\Product\Collection
+     */
+    protected $_productCollection;
+    /**
+     * @var \Magento\Catalog\Model\Product
+     */
+    protected $_product;
+
+    public function __construct(Context $context,
+                                \Magento\Catalog\Model\Product $product,
+                                \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,
                                 \Magento\Customer\Model\ResourceModel\Customer\CollectionFactory $collectionFactory)
     {
         $this->subCollectionFactory = $collectionFactory;
-        $this->test = $productCollectionFactory;
+        $this->_productCollection = $productCollectionFactory;
+        $this->_product = $product;
+        $this->resultFactory = $context->getResultFactory();
         parent::__construct($context);
     }
 
     public function execute()
     {
-//        $productCollection = $this->_objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
-//        $productCollection->addAttributeToSelect(['name', 'price', 'image']);
-//        $productCollection->addAttributeToFilter('sku', 'Nike air-white');
-        $productCollection = $this->test->create();
+        $productCollection = $this->_objectManager->create('Magento\Catalog\Model\ResourceModel\Product\Collection');
         $productCollection->addAttributeToSelect(['name', 'price', 'image']);
         $productCollection->addAttributeToFilter('sku', 'Nike air-white');
 
@@ -35,12 +44,20 @@ class Collection extends Action
         //$outputSQLQueries =  $productCollection->getSelect()->__toString(); // show SQL queries
         //print_r($outputSQLQueries);
         // $productCollection->save();
+
+        // $product = $this->_objectManager->create('Magento\Catalog\Model\Product');
+        $product = $this->_product;
+        $product->load(31);
+        $product->setName('Jenick');
+        $product->getData();
+        $result  = $this->resultFactory->create('json');
+        return $result->setData($product->getData());
+
         foreach ($productCollection as $item) {
             echo "<pre>";
             print_r($item->getData());
             echo "</pre>";
         }
-
 
         $subscriptionCollection = $this->subCollectionFactory->create();
         // $subscriptionCollection->addFieldToFilter('subscription_id', '1');

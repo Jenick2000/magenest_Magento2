@@ -12,9 +12,6 @@
                 </item>
             </argument>
             <settings>
-<!--                <validation>-->
-<!--                    <rule name="validate-date" xsi:type="boolean">true</rule>-->
-<!--                </validation>-->
                 <dataType>text</dataType>
                 <label translate="true">Date Example</label>
                 <visible>true</visible>

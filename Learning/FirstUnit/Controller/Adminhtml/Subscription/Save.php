@@ -22,7 +22,7 @@ class Save extends \Magento\Framework\App\Action\Action
             $subscription->setEmail($data['email']);
             $subscription->setStatus($data['status']);
             $subscription->save();
-            $this->messageManager->addSuccess(__('You saved subscriber success'));
+            $this->messageManager->addSuccessMessage(__('You saved subscriber success'));
             $this->_redirect('helloworld/subscription');
 
         }else{

@@ -8,9 +8,11 @@ class Example extends \Magento\Eav\Model\Entity\Attribute\Backend\AbstractBacken
     public function afterLoad($object)
     {
         $value = $object->getData('example_eav');
-        $len = strlen($value);
-        $res = str_split($value, $len - 8);
-        $object->setData('example_eav', $res[0]);
+        if($value != '') {
+            $len = strlen($value);
+            $res = str_split($value, $len - 8);
+            $object->setData('example_eav', 'hello');
+        }
         return parent::afterLoad($object);
     }
 

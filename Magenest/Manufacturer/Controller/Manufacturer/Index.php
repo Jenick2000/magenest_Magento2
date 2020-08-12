@@ -2,27 +2,37 @@
 
 namespace Magenest\Manufacturer\Controller\Manufacturer;
 
+use Magento\Catalog\Model\ProductRepository;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
-use Magenest\Manufacturer\Model\ResourceModel\Manufacturer\CollectionFactory;
 
 class Index extends Action
 {
-    /**
-     * @var CollectionFactory
-     */
-    protected $collectionFactory;
 
-    public function __construct(Context $context, CollectionFactory $collectionFactory)
+
+    /**
+     * @var \Magenest\Manufacturer\Model\ManufacturerRepository
+     */
+    protected $_manufactorerRepository;
+    /**
+     * @var Magento\Catalog\Model\ProductRepository
+     */
+    protected $productRepository;
+
+    public function __construct(Context $context,
+                                \Magento\Catalog\Model\ProductRepository $productRepository,
+                                \Magenest\Manufacturer\Model\ManufacturerRepository $manufacturerRepository)
     {
-        $this->collectionFactory = $collectionFactory;
+        $this->_manufactorerRepository = $manufacturerRepository;
+        $this->productRepository = $productRepository;
         parent::__construct($context);
     }
 
     public function execute()
     {
-        $manu = $this->collectionFactory->create();
-        var_dump($manu->getData());
+        $manu = $this->_manufactorerRepository->getById(1);
+        $product = $this->productRepository->getById('10');
+        var_dump($manu);
         exit('ok lkl');
     }
 }
