@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="price_for_guest" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10"
+                 translate="label">
+            <label>Display Price For Guest</label>
+            <tab>Magenest</tab>
+            <resource>Magenest_JuniorCustomCatalog::magenest_juniorcustomcatalog</resource>
+
+            <group id="general" translate="label comment" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Enable/Disable Display Price For Guest</label>
+                <comment>you can anable or disable show price for guest
+                </comment>
+
+                <field id="config_option" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="1" type="select">
+                    <label>Enable/Disable</label>
+                    <comment>This field is an example for a basic yes or no select.</comment>
+                    <source_model>Magenest\JuniorCustomCatalog\Block\Adminhtml\Form\Field\Option</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,13 @@
+<?php
+/**
+ * @var Magenest\JuniorCustomCatalog\Block\Adminhtml\OrderNote $block
+ */
+
+?>
+<?php if($block->getNote() != ''){  ?>
+
+    <h2>Customer note message </h2>
+    <hr>
+    <span> <?= $block->getNote() ?></span>
+
+<?php } ?>

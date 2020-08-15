@@ -8,7 +8,7 @@
         <observer name="add_info_account_to_cart" disabled="true"
                   instance="Magenest\Cybergame\Observer\AddInforAccocuntToCart"/>
     </event>
-    <event name="sales_order_place_after">
-        <observer name="create_account_or_edit_hour" instance="Magenest\Cybergame\Observer\UpdateAccountGame"/>
+    <event name="sales_order_place_after" >
+        <observer name="create_account_or_edit_hour" disabled="true" instance="Magenest\Cybergame\Observer\UpdateAccountGame"/>
     </event>
 </config>

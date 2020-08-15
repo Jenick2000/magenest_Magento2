@@ -1,0 +1,36 @@
+<style>
+    .authentication-wrapper {
+        margin-top: 0;
+    }
+</style>
+<div>
+    <button id="behind" style="margin-right: 50px">BEHIND</button>
+    <span>Total $1200</span>
+    <button id="continue" style="margin-left: 50px">COUNTINUE</button>
+</div>
+
+<script>
+    require(['jquery', 'Magento_Checkout/js/model/step-navigator'], function ($, stepNavigator) {
+        let btnCon = document.getElementById('continue');
+        $('#continue').click(function () {
+            stepNavigator.next();
+            if (stepNavigator.isProcessed('shipping')) {
+                btnCon.innerText = "PAY NOW";
+            } else {
+                btnCon.innerText = 'CONTINUE';
+            }
+        })
+        $('#behind').click(function () {
+
+            let activeIndex = stepNavigator.getActiveItemIndex()
+            btnCon.innerText = 'CONTINUE';
+            if (activeIndex === 2) {
+                stepNavigator.navigateTo('shipping');
+            } else if (activeIndex === 1) {
+                stepNavigator.navigateTo('login_step');
+                stepNavigator.setHash('login_step')
+            }
+
+        })
+    })
+</script>
