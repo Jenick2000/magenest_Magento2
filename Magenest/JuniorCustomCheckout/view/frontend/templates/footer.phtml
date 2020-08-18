@@ -2,35 +2,104 @@
     .authentication-wrapper {
         margin-top: 0;
     }
+
+    .actions-toolbar {
+        display: none;
+    }
 </style>
 <div>
     <button id="behind" style="margin-right: 50px">BEHIND</button>
-    <span>Total $1200</span>
+    <span id="jen_orderTotal">Total <b id="j_total"></b> </span>
     <button id="continue" style="margin-left: 50px">COUNTINUE</button>
 </div>
 
 <script>
-    require(['jquery', 'Magento_Checkout/js/model/step-navigator'], function ($, stepNavigator) {
+    require(['jquery',
+        'Magento_Checkout/js/model/step-navigator',
+        'Magento_Checkout/js/checkout-data',
+        'Magento_Checkout/js/model/quote',
+        'Magento_Customer/js/model/customer',
+        'mage/url',
+    ], function ($, stepNavigator, checkoutData, quote,customer,  urlBuilder) {
         let btnCon = document.getElementById('continue');
-        $('#continue').click(function () {
-            stepNavigator.next();
-            if (stepNavigator.isProcessed('shipping')) {
-                btnCon.innerText = "PAY NOW";
-            } else {
-                btnCon.innerText = 'CONTINUE';
+        $('#j_total').text(getCurrent() + getOrderTotal());
+        $(document).on('change', '#co-shipping-method-form', function () {
+            let shippingMethod = quote.shippingMethod();
+            if (shippingMethod) {
+                $('#j_total').text(getCurrent() + getOrderTotal(shippingMethod));
             }
-        })
-        $('#behind').click(function () {
+        });
 
+        window.addEventListener('popstate', function (event) {
+            // The URL changed...
+            let hash = window.location.hash;
+            if (hash === 'payment') {
+                setTimeout(function () {
+                    btnCon.innerText = 'PAY NOW';
+                }, 100)
+            } else {
+                $('#continue').text('CONTINUE');
+            }
+        });
+
+        $('#continue').click(function () {
+            let activeIndex = stepNavigator.getActiveItemIndex()
+            if (activeIndex === 0) {
+                let emailValid = checkoutData.getCheckedEmailValue();
+
+                if (emailValid || customer.isLoggedIn()) {
+                    stepNavigator.next();
+                }
+                return;
+            }
+            if (stepNavigator.isProcessed('login_step') && !stepNavigator.isProcessed('shipping')) {
+                let btnNext = $('#shipping-method-buttons-container div button')[0];
+                btnNext.click();
+            }
+            setTimeout(function () {
+                if (stepNavigator.isProcessed('shipping')) {
+                    btnCon.innerText = 'PAY NOW';
+                }
+            }, 3000)
+            if (stepNavigator.isProcessed('shipping')) {
+                let placeBtn = $('.actions-toolbar div button.checkout')[0];
+                placeBtn.click();
+            }
+
+        });
+        $('#behind').click(function () {
             let activeIndex = stepNavigator.getActiveItemIndex()
             btnCon.innerText = 'CONTINUE';
+
             if (activeIndex === 2) {
                 stepNavigator.navigateTo('shipping');
             } else if (activeIndex === 1) {
                 stepNavigator.navigateTo('login_step');
                 stepNavigator.setHash('login_step')
+            } else if (activeIndex === 0) {
+                window.location.href = urlBuilder.build("checkout/cart");
             }
 
-        })
+        });
+
+        function getOrderTotal(shipping) {
+            let totals = quote.getTotals()();
+            if (shipping) {
+                if (totals) {
+                    return totals['grand_total'] + shipping.amount;
+                }
+                return quote['grand_total'] + shipping.amount;
+            }
+            if (totals) {
+                return totals['grand_total'];
+            }
+            return quote['grand_total'];
+        }
+
+        function getCurrent() {
+            let currentPrice = quote.getPriceFormat().pattern.slice(0, quote.getPriceFormat().pattern.length - 2);
+            return currentPrice + ' ';
+        }
+
     })
 </script>

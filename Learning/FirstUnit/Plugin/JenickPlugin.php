@@ -36,8 +36,8 @@ class JenickPlugin
     {
 
         $p2 = 'Marry';
-        //  $result = $process('Yo1', $p2); // khong co cai nay thi khong chay vao function chinh vaf around se override function chinh
-        return $p1 . ' Love' . $p2;
+       // $result = $process('Yo1', $p2); // khong co cai nay thi khong chay vao function chinh vaf around se override function chinh
+        return $p1 . ' Love ' . $p2;
 
     }
 

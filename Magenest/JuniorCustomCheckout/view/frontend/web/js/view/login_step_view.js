@@ -68,7 +68,6 @@ define(
              * When the user navigates to the custom step via url anchor or back button we_must show step manually here
              */
             navigate: function () {
-
                 this.isVisible(true);
 
             },

@@ -49,7 +49,7 @@ class AdditionalOptions implements ObserverInterface
                     'value' => $value
                 ];
             }
-        } else {
+        } else if ($post != '') {
             $additionalOptions[] = [
                 'label' => 'Delivery Time',
                 'value' => $post

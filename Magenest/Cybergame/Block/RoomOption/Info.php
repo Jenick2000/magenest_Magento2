@@ -39,8 +39,13 @@ class Info extends Template
         $this->product_id = $this->getRequest()->getParam('id');
         $roomOption = $this->roomExtraOptionCollectionFactory->create()
             ->addFieldToFilter('product_id', $this->product_id);
-        $data = $roomOption->getData();
-        return $data[0];
+        if ($roomOption->getData()) {
+            $data = $roomOption->getData();
+            return $data[0];
+        } else {
+            exit('Not Found');
+        }
+
 
     }
 
