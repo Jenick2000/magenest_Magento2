@@ -1,0 +1,25 @@
+<?php
+/**\
+ * @var Magenest\DeliveryTime\Block\Order\DeliveryInfo $block
+ */
+ $block->test();
+$order = $block->getOrder();
+?>
+<?php if($block->canShow()) : ?>
+<div class="block ">
+    <div class="block-title"><strong>Delivery Date</strong></div>
+    <div class="block-content">
+        <div class="box">
+            <div class="box-content">
+                <p>Delivery Date: <?= $order->getDeliveryDate() ?></p>
+            </div>
+            <div class="box-content">
+                <p>Delivery Time Interval: <?= $block->convertDeliveryTime($order->getDeliveryTime()) ?></p>
+            </div>
+            <div class="box-content">
+                <p>Delivery Comments:  <?= $order->getDeliveryComment() ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

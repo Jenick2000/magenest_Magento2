@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_DeliveryTime::deliveryTime" title="Manage Delivery Time" module="Magenest_DeliveryTime" sortOrder="51" resource="Magenest_DeliveryTime::deliveryTime"/>
+        <add id="Magenest_DeliveryTime::time" title="Delivery Time" module="Magenest_DeliveryTime" sortOrder="20" action="delivery/deliverytime" parent="Magenest_DeliveryTime::deliveryTime" resource="Magenest_DeliveryTime::time"/>
+        <add id="Magenest_DeliveryTime::configuration" title="Configuration" module="Magenest_DeliveryTime" sortOrder="30" action="adminhtml/system_config/edit/section/delivery_time" parent="Magenest_DeliveryTime::deliveryTime" resource="Magenest_DeliveryTime::configuration"/>
+    </menu>
+</config>

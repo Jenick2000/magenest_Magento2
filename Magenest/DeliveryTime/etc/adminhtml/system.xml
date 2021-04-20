@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="magenest" translate="label" sortOrder="500">
+            <label>Magenest</label>
+        </tab>
+        <section id="delivery_time" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"  showInStore="1">
+            <label>Delivery Time</label>
+            <tab>magenest</tab>
+            <resource>Magenest_DeliveryTime::delivery_time</resource>
+            <group id="delivery_time_config" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="1" translate="label comment">
+                <label>Delivery Time Setting</label>
+                <field id="enable" translate="label comment" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>Enabled</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="of_time" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Disable Delivery On</label>
+                    <source_model>Magenest\DeliveryTime\Model\Config\Source\OffTime</source_model>
+                </field>
+                <field id="minimal_delivery_interval" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimal Delivery Interval</label>
+                    <comment>In days. Set to 0 to allow day delivery</comment>
+                </field>
+                <field id="maximal_delivery_interval" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Maximal Delivery Interval </label>
+                </field>
+                <field id="delivery_comment"  type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delivery Comment</label>
+                </field>
+                <field id="same_day_delivery_after" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="60">
+                    <label>Enabled `Disable Same Day Delivery After` </label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="next_day_delivery_after"  showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="70">
+                    <label>Enabled `Disable Next Day Delivery After`</label>
+                    <frontend_model>Magenest\DeliveryTime\Block\Adminhtml\System\Config\Fieldset\NextDayDeliveryAfter</frontend_model>
+                </field>
+                <field id="hour_next_day_delivery_after" type="text" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>hidden</label>
+                    <frontend_model>Magenest\DeliveryTime\Block\Adminhtml\System\Config\Fieldset\HiddenField</frontend_model>
+                </field>
+                <field id="minute_next_day_delivery_after" type="text" showInDefault="1" showInWebsite="0" showInStore="1">
+                    <label>hidden</label>
+                    <frontend_model>Magenest\DeliveryTime\Block\Adminhtml\System\Config\Fieldset\HiddenField</frontend_model>
+                </field>
+                <field id="date_format" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="75">
+                    <label>Date Format</label>
+                    <source_model>Magenest\DeliveryTime\Model\Config\Source\DateFormat</source_model>
+                </field>
+                <field id="delivery_display_on" translate="label comment" type="multiselect" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Delivery Display On</label>
+                    <source_model>Magenest\DeliveryTime\Model\Config\Source\DisplayInto</source_model>
+                </field>
+                <field id="enable_comment_field" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="90">
+                    <label>Enable Comments Field</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

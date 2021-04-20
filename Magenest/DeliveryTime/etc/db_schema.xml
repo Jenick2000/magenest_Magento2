@@ -1,0 +1,33 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="magenest_delivery_time" resource="default" engine="innodb" comment="Magenest delivery time">
+        <column xsi:type="int" name="delivery_time_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="delivery time ID"/>
+        <column xsi:type="text" name="store_id"  nullable="true" comment="delivery time scope"/>
+        <column xsi:type="text" name="customer_group_id" nullable="false" comment="scope for customer group"/>
+        <column xsi:type="text" name="times" nullable="false" comment="delivery times"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="delivery_time_id"/>
+        </constraint>
+    </table>
+    <table name="quote_address" resource="checkout" comment="add custom attribute" >
+        <column name="delivery_date" xsi:type="varchar" length="100" comment="delivery date" />
+        <column name="delivery_time" xsi:type="varchar" length="100" comment="delivery date" />
+        <column name="delivery_comment" xsi:type="text"  comment="delivery text" />
+    </table>
+    <table name="quote">
+        <column name="delivery_date" xsi:type="varchar" length="100" comment="delivery date" />
+        <column name="delivery_time" xsi:type="varchar" length="100" comment="delivery time" />
+        <column name="delivery_comment" xsi:type="text"  comment="delivery text" />
+    </table>
+    <table name="sales_order" resource="sales" comment="Sales Flat Order">
+        <column name="delivery_date" xsi:type="varchar" length="100" comment="delivery date" />
+        <column name="delivery_time" xsi:type="varchar" length="100" comment="delivery time" />
+        <column name="delivery_comment" xsi:type="text"  comment="delivery text" />
+        <column name="delivery_reminder" xsi:type="int" default="0" comment="delivery text" />
+    </table>
+    <table name="sales_order_grid">
+        <column name="delivery_date" xsi:type="varchar" length="100" comment="delivery date" />
+        <column name="delivery_time" xsi:type="varchar" length="100" comment="delivery date" />
+    </table>
+</schema>

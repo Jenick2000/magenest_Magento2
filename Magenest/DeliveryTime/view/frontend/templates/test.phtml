@@ -1,0 +1,30 @@
+<?php
+/**
+ * @var Magenest\DeliveryTime\Block\LearnCookie $block
+ */
+
+$block->setPublicCookie('tyray', 'scope cookie');
+$a = $block->getCookie('tyray');
+?>
+
+<h3 onclick="setCustomCookie()"> click save cookie</h3>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'jquery/jquery.cookie'
+    ], function ($) {
+        $(document).ready(function () {
+
+            var simple_cookie = $.cookie('name_cookie'); // Get Cookie Value
+            if(!simple_cookie) {
+                var date = new Date();
+                var minutes = 60;
+                date.setTime(date.getTime() + (minutes * 60 * 1000));
+                $.cookie('name_cookie', 'value of cookie', {expires: date}); // Set Cookie with metadata
+            }else {
+                console.log(simple_cookie);
+            }
+
+
+        });
+</script>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <arguments>
+        <argument name="collections" xsi:type="array">
+            <item name="manage_delivery_time_listing_data_source" xsi:type="string">Magenest\DeliveryTime\Model\ResourceModel\DeliveryTime\Grid\Collection</item>
+        </argument>
+    </arguments>
+</type>
+    <virtualType name="Magenest\DeliveryTime\Model\ResourceModel\DeliveryTime\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_delivery_time</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\DeliveryTime\Model\ResourceModel\DeliveryTime</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="custom_shipping_address_field" type="Magenest\DeliveryTime\Plugin\Checkout\LayoutProcessorPlugin" sortOrder="10"/>
+    </type>
+    <type name="Magento\Checkout\Api\ShippingInformationManagementInterface">
+        <plugin name="delivery_shipping_information_management" type="Magenest\DeliveryTime\Plugin\ShippingInformationManagement" sortOrder="2"/>
+    </type>
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="delivery_date" xsi:type="string">sales_order.delivery_date</item>
+                <item name="delivery_time" xsi:type="string">sales_order.delivery_time</item>
+            </argument>
+        </arguments>
+    </virtualType>
+</config>

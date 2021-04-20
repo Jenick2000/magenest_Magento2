@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">manage_delivery_time_form.manage_delivery_time_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Menu</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="delete" class="Magenest\FbChatbot\Block\Adminhtml\Menu\Edit\DeleteButton"/>
+            <button name="save_and_continue"
+                    class="Magenest\FbChatbot\Block\Adminhtml\Menu\Edit\SaveAndContinueButton"/>
+            <button name="reset" class="Magenest\FbChatbot\Block\Adminhtml\Menu\Edit\ResetButton"/>
+            <button name="save" class="Magenest\FbChatbot\Block\Adminhtml\Menu\Edit\SaveButton"/>
+            <button name="back">
+                <url path="*/*/"/>
+                <class>back</class>
+                <label translate="true">Back</label>
+            </button>
+        </buttons>
+        <namespace>manage_delivery_time_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>manage_delivery_time_form.manage_delivery_time_form_data_source</dep>
+        </deps>
+    </settings>
+
+    <dataSource name="manage_delivery_time_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="delivery/deliverytime/save"/>
+        </settings>
+        <dataProvider class="Magenest\DeliveryTime\Model\DeliveryTime\DataProvider" name="manage_delivery_time_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>delivery_time_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="delivery_time" sortOrder="10">
+        <settings>
+            <label translate="true">Delivery Time Information</label>
+        </settings>
+        <!-- This field represents form id and is hidden -->
+        <field name="delivery_time_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">false</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">delivery_time</item>
+                </item>
+            </argument>
+        </field>
+        <field name="storeviews" formElement="multiselect" class="Magento\Store\Ui\Component\Form\Field\StoreView">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">block</item>
+                    <item name="default" xsi:type="number">0</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>int</dataType>
+                <tooltip>
+                    <link>https://docs.magento.com/m2/ce/user_guide/configuration/scope.html</link>
+                    <description>What is this?</description>
+                </tooltip>
+                <label translate="true">Store View</label>
+                <dataScope>store_id</dataScope>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Magento\Cms\Ui\Component\Listing\Column\Cms\Options"/>
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+        <field name="customer_group_id" formElement="multiselect">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Customer Group</label>
+                <dataScope>customer_group_id</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+            <formElements>
+                <multiselect>
+                    <settings>
+                        <options class="Magenest\DeliveryTime\Ui\Component\Form\CustomerGroup" />
+                    </settings>
+                </multiselect>
+            </formElements>
+        </field>
+
+        <dynamicRows name="times">
+            <settings>
+                <addButtonLabel translate="true">Add Time</addButtonLabel>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <componentType>dynamicRows</componentType>
+            </settings>
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                    </item>
+                </argument>
+                <field name="time_from" formElement="select" component="Magenest_DeliveryTime/js/form/element/time-from">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">false</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">true</rule>
+                        </validation>
+                        <dataType>select</dataType>
+                        <label>Delivery From</label>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <options class="Magenest\DeliveryTime\Ui\Component\Form\TimeOption"/>
+                                <caption translate="true">-- Please Select --</caption>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+                <field name="time_to" formElement="select" component="Magenest_DeliveryTime/js/form/element/time-to">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">false</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <validation>
+                            <rule name="required-entry" xsi:type="boolean">true</rule>
+                        </validation>
+                        <dataType>select</dataType>
+                        <label>Delivery To</label>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <options class="Magenest\DeliveryTime\Ui\Component\Form\TimeOption"/>
+                                <caption translate="true">-- Please Select --</caption>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+                <actionDelete template="Magento_Backend/dynamic-rows/cells/action-delete">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="fit" xsi:type="boolean">false</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <additionalClasses>
+                            <class name="some-class">true</class>
+                        </additionalClasses>
+                        <dataType>text</dataType>
+                        <label>Actions</label>
+                        <componentType>actionDelete</componentType>
+                    </settings>
+                </actionDelete>
+            </container>
+        </dynamicRows>
+
+    </fieldset>
+</form>

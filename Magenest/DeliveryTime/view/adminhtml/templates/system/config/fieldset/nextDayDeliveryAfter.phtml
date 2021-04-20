@@ -1,0 +1,25 @@
+<?php
+/**
+ * @var Magenest\DeliveryTime\Block\Adminhtml\System\Config\Fieldset\NextDayDeliveryAfter $block
+ */
+$hourOptions = $block->getTimeOptions(23, 1);
+$minuteOptions = $block->getTimeOptions(59, 5);
+$value = $block->getConfigData();
+?>
+<div>
+    <select id="hour_next_day_delivery_after" name="groups[delivery_time_config][fields][hour_next_day_delivery_after][value]" style="width: 30%">
+        <?php foreach($hourOptions as $hour) : ?>
+            <?php $_selected = ($hour['value'] == $value['hourConfig']) ? ' selected="selected"' : '' ?>
+            <option value="<?= $hour['value'] ?>" <?= $_selected ?>><?= $hour['label'] ?> </option>
+        <?php endforeach; ?>
+    </select>
+    <select id="minute_next_day_delivery_after" name="groups[delivery_time_config][fields][minute_next_day_delivery_after][value]" style="width: 30%">
+        <?php foreach($minuteOptions as $minute) : ?>
+            <?php $_selected = ($minute['value'] == $value['minuteConfig']) ? ' selected="selected"' : '' ?>
+            <option value="<?= $minute['value'] ?>" <?= $_selected ?>><?= $minute['label'] ?> </option>
+        <?php endforeach; ?>
+
+    </select>
+    <span>Hour : Minute</span>
+</div>
+

@@ -1,0 +1,36 @@
+<?php
+/**
+ * @var Magenest\DeliveryTime\Block\Adminhtml\Order\DeliveryInfo $block
+ */
+?>
+<?php $_invoice = $block->getInvoice() ?>
+<?php $_order = $_invoice->getOrder() ?>
+<?php if($block->canShowDelivery('invoice_view_backend')) : ?>
+    <section class="admin__page-section ">
+    <div class="admin__page-section-item" style="width: 49%">
+        <div class="admin__page-section-item-title">
+            <span class="title"><?= $block->escapeHtml(__('Delivery Information')) ?></span>
+        </div>
+        <div class="admin__page-section-item-content">
+            <table class="admin__table-secondary">
+                <tr>
+                    <td><?= $block->escapeHtml(__('Delivery Date')) ?></td>
+                    <td> <?= $_order->getDeliveryDate() ?>  </td>
+                </tr>
+                <tr>
+                    <td><?= $block->escapeHtml(__('Delivery Time Interval')) ?></td>
+                    <td> <?= $block->convertDeliveryTime($_order->getDeliveryTime()) ?>  </td>
+                </tr>
+                <tr>
+                    <td><?= $block->escapeHtml(__('Delivery Comments')) ?></td>
+                    <td>hello</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    </div>
+    </section>
+<?php endif; ?>
+
+

@@ -1,0 +1,49 @@
+<?php
+/**
+ * @var Magenest\DeliveryTime\Block\Adminhtml\Order\Create\Delivery $block
+ */
+$quote = $block->getQuote();
+?>
+<section class="admin__page-section amasty-deliverydate">
+    <div class="admin__page-section-title">
+        <span class="title">Delivery Information</span>
+    </div>
+
+    <div class="admin__field">
+        <label class="label admin__field-label" for="deliverydate_date" data-ui-id="form-element-amdeliverydate[date]label"><span>Delivery Date</span></label>
+        <input name="order[comment][delivery_date]" readonly id="magenest_delivery_date" value="<?= $quote->getDeliveryDate() ?>" style="width: 40%" type="text" class=" admin__control-text  input-text" ></div>
+    <div class="admin__field">
+        <label class="label admin__field-label" for="deliverydate_tinterval" data-ui-id="form-element-amdeliverydate[tinterval_id]label"><span>Delivery Time Interval</span></label>
+        <select id="deliverydate_tinterval" name="order[comment][delivery_time]" style="width: 40%" class=" select admin__control-select" >
+            <option value="">Please select time interval.</option>
+            <?php foreach ($block->getDeliveryTime() as $item) : ?>
+                <?php $_selected = ($item['value'] == $quote->getDeliveryTime()) ? ' selected="selected"' : '' ?>
+                <option value="<?= $item['value'] ?>" <?= $_selected ?>><?= $item['label'] ?> </option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div class="admin__field">
+        <label class="label admin__field-label" for="deliverydate_comment" data-ui-id="form-element-amdeliverydate[comment]label"><span>Delivery Comments</span></label>
+        <textarea id="deliverydate_comment" name="order[comment][delivery_comment]" title="Delivery Comments" style="width: 40%" rows="2" cols="15" class=" textarea admin__control-textarea" ><?= $quote->getDeliveryComment() ?></textarea>
+    </div>
+</section>
+<script>
+    require([
+        'jquery',
+        'mage/translate',
+        'mage/calendar'
+    ], function ($, $t) {
+        $('#magenest_delivery_date').calendar({
+            changeMonth: true,
+            changeYear: false,
+            showButtonPanel: true,
+            currentText: $t('Go Today'),
+            closeText: $t('Close'),
+            showWeek: true,
+            dateFormat: "mm/dd/yy",
+            minDate: <?= $block->getMinimalInterval() ?>,
+            maxDate: <?= $block->getMaximalInterval() ?>,
+            //beforeShowDay: true
+        });
+    })
+</script>

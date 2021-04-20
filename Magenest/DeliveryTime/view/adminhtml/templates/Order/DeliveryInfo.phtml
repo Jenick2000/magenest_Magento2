@@ -1,0 +1,42 @@
+<?php
+/**
+ * @var Magenest\DeliveryTime\Block\Adminhtml\Order\DeliveryInfo $block
+ */
+
+$scope = 'order_view_backend';
+if($block->getNameInLayout() === 'shipping_delivery_info') {
+    $_order = $block->getShipment()->getOrder();
+    $scope = 'shipping_view_backend';
+}else{
+    $_order = $block->getOrder();
+}
+?>
+<?php if($block->canShowDelivery($scope)) : ?>
+<section class="admin__page-section order-view-billing-shipping">
+    <div class="admin__page-section-title">
+        <span class="title"><?= $block->escapeHtml(__('Delivery Information')) ?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <div class="admin__page-section-item order-payment-method">
+            <div class="admin__page-section-item-content">
+                <table class="admin__table-secondary">
+                    <tr>
+                        <td><?= $block->escapeHtml(__('Delivery Date')) ?></td>
+                        <td> <?= $_order->getDeliveryDate() ?>  </td>
+                    </tr>
+                    <tr>
+                        <td><?= $block->escapeHtml(__('Delivery Time Interval')) ?></td>
+                        <td> <?= $block->convertDeliveryTime($_order->getDeliveryTime()) ?>  </td>
+                    </tr>
+                    <tr>
+                        <td><?= $block->escapeHtml(__('Delivery Comments')) ?></td>
+                        <td> <?= $_order->getDeliveryComment() ?>  </td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+
+    </div>
+</section>
+<?php endif; ?>

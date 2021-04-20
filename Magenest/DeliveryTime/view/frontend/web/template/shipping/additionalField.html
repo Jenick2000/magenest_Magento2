@@ -1,0 +1,37 @@
+<div class="step-title" translate="'Delivery Date'" data-role="title" />
+<div style="margin-top: 20px;">
+    <div class="field">
+        <label class="label" >
+            <b data-bind="i18n: 'Delivery Date'"></b>
+        </label>
+        <div class="control" style="margin-top: 10px;">
+            <input class="input-text" readonly="readonly" data-bind="value: deliveryDate, afterRender: datePicker('#delivery_date')" placeholder="select date..." type="text" id="delivery_date" style="width: auto" name="delivery_date">
+        </div>
+    </div>
+    <div class="field" style="margin-top: 25px;">
+        <label class="label" >
+            <b data-bind="i18n: 'Delivery Time Interval'"></b>
+        </label>
+        <div class="control" data-bind="css: {'_with-tooltip': element.tooltip}" style="margin-top: 10px;">
+            <select name="delivery_time_interval" data-bind="value: deliveryTime, foreach: getDeliveryTimes()" style="width: 21%">
+                <option data-bind="value: value, text: label"></option>
+            </select>
+        </div>
+    </div>
+    <div class="field"  style="margin-top: 25px;" data-bind="">
+
+        <label class="label" data-bind="attr: { for: element.uid }">
+            <b data-bind="i18n: 'Delivery Comments'"></b>
+        </label>
+
+        <div class="control" style="margin-top: 10px;" data-bind="css: {'_with-tooltip': element.tooltip}">
+
+
+        <textarea class="admin__control-textarea" placeholder="note something..." data-bind="value: deliveryComment, valueUpdate: 'keyup'" name="deliverydate_comment" cols="5" rows="5" style="margin-top: 0px; margin-bottom: 0px; height: 127px;"></textarea>
+
+        </div>
+        </div>
+
+    </div>
+</div>
+
