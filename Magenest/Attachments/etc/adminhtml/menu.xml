@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_Attachments::attachments" title="Attachments Management" module="Magenest_Attachments" sortOrder="50" resource="Magenest_Attachments::attachments"/>
+        <add id="Magenest_Attachments::listing" title="List Attachments" module="Magenest_Attachments" sortOrder="20" action="magenest/attachments" parent="Magenest_Attachments::attachments" resource="Magenest_Attachments::listing"/>
+    </menu>
+</config>

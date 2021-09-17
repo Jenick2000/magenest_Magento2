@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">attachment_listing.manage_attachment_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add New Attachment</label>
+            </button>
+        </buttons>
+        <spinner>attachment_columns</spinner>
+        <deps>
+            <dep>attachment_listing.manage_attachment_listing_data_source</dep>
+        </deps>
+    </settings>
+
+
+    <dataSource name="manage_attachment_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">file_id</param>
+            </storageConfig>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="manage_attachment_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>file_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters" />
+        <filterSearch name="fulltext"/>
+        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="delete">
+                <settings>
+                    <url path="chatbot/menu/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Delete</label>
+                    <confirm>
+                        <title>Delete</title>
+                        <message translate="true">Are you sure you wan't to delete selected items?</message>
+                    </confirm>
+                </settings>
+            </action>
+        </massaction>
+        <paging name="listing_paging"/>
+    </listingToolbar>
+    <!-- define the columns of my grid -->
+    <columns name="attachment_columns">
+        <settings>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">attachment_listing.manage_attachment_listing_data_source</item>
+                    <item name="target" xsi:type="string">applyAction</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">view</item>
+                        <item name="1" xsi:type="string">${ $.$data.rowIndex }</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>menu_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="file_id">
+            <settings>
+                <filter>numberRange</filter>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="file_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">File Name</label>
+            </settings>
+        </column>
+        <column name="file_label">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">File Label</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Magenest\Attachments\Ui\Component\Listing\Column\Actions">
+            <settings>
+                <indexField>file_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+
+</listing>

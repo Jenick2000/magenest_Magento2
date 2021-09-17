@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="magenest_file_attachment" resource="default" engine="innodb" comment="table file attachments management">
+        <column name="file_id" xsi:type="int" padding="10" unsigned="true" nullable="false" identity="true" comment="file id"/>
+        <column name="file_name" xsi:type="varchar" length="255" nullable="false" />
+        <column name="path" xsi:type="text" nullable="false" />
+        <column name="file_label" xsi:type="varchar" length="255" nullable="false" />
+        <column name="visible" xsi:type="int" nullable="false" default="1"/>
+        <column name="customer_group_ids" xsi:type="varchar" nullable="true" />
+        <column name="include_on_order" xsi:type="int" nullable="false" default="0"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="The date when the file was created"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP" comment="The date when the file was modified"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="file_id"/>
+        </constraint>
+    </table>
+
+</schema>

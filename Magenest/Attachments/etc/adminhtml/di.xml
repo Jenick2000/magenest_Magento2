@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magenest\Attachments\Model\FileUploader">
+        <arguments>
+            <argument name="baseTmpPath" xsi:type="string">attachments/tmp/file</argument>
+            <argument name="basePath" xsi:type="string">attachments/file</argument>
+        </arguments>
+    </type>
+</config>

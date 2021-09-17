@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="manage_attachment_listing_data_source" xsi:type="string">Magenest\Attachments\Model\ResourceModel\Attachments\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <virtualType name="Magenest\Attachments\Model\ResourceModel\Attachments\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">magenest_file_attachment</argument>
+            <argument name="resourceModel" xsi:type="string">Magenest\Attachments\Model\ResourceModel\Attachments</argument>
+        </arguments>
+    </virtualType>
+    <preference for="Magenest\Attachments\Api\AttachmentRepositoryInterface" type="Magenest\Attachments\Model\ResourceModel\AttachmentRepository" />
+</config>
