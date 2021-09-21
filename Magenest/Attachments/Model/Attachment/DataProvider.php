@@ -45,11 +45,28 @@ class DataProvider extends AbstractDataProvider {
 
         foreach ($items as $item) {
             if(!empty($item->getPath())) {
-                $item->setData('path', $this->serialize->unserialize($item->getPath()) );
+                $file = $this->serialize->unserialize($item->getPath());
+                $item->setData('path', $file );
+                $item->setData('file_extension', $this->getExtensionFile($file[0]));
             }
             $this->loadedData[$item->getId()] = $item->getData();
         }
 
         return $this->loadedData;
     }
+
+    /**
+     * @param array $file
+     * @return mixed|string
+     */
+    public function getExtensionFile( array $file) {
+        if(isset($file['type'])){
+            $extension = explode('/', $file['type']);
+            if(isset($extension[1]))
+                return $extension[1];
+            return $file['type'];
+        }
+        return '';
+    }
+
 }

@@ -94,7 +94,35 @@
                 <label translate="true">File Label</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magenest\Attachments\Ui\Component\Listing\Column\Actions">
+        <column name="file_type" class="Magenest\Attachments\Ui\Component\Listing\Column\FileType">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Mine Type</label>
+            </settings>
+        </column>
+        <column name="file_size">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">File Size</label>
+            </settings>
+        </column>
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+                <filter>dateRange</filter>
+                <dataType>date</dataType>
+                <dataType>date</dataType>
+                <label translate="true">Created At</label>
+            </settings>
+        </column>
+        <column name="updated_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+            <filter>dateRange</filter>
+            <dataType>date</dataType>
+            <dataType>date</dataType>
+            <label translate="true">Updated At</label>
+            </settings>
+        </column>
+        <actionsColumn name="actions" class="Magenest\Attachments\Ui\Component\Listing\Column\Actions" sortOrder="999">
             <settings>
                 <indexField>file_id</indexField>
             </settings>

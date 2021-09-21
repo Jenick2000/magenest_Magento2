@@ -6,4 +6,15 @@
             <argument name="basePath" xsi:type="string">attachments/file</argument>
         </arguments>
     </type>
+
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="course" xsi:type="array">
+                    <item name="class" xsi:type="string">Magenest\Attachments\Ui\DataProvider\Product\Form\Modifier\Course</item>
+                    <item name="sortOrder" xsi:type="number">400</item>
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
 </config>

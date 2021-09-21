@@ -62,7 +62,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="dataType" xsi:type="string">string</item>
-                    <item name="component" xsi:type="string">Magento_Ui/js/form/element/file-uploader</item>
+                    <item name="component" xsi:type="string">Magenest_Attachments/js/file-uploader</item>
                     <item name="label" xsi:type="string" translate="true">File</item>
                     <item name="visible" xsi:type="boolean">true</item>
                     <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
@@ -74,20 +74,43 @@
                 </item>
             </argument>
         </field>
-        <field name="file_name" formElement="input">
+        <container name="container_file" >
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">attachment_form</item>
+                    <item name="label" xsi:type="boolean">false</item>
+                    <item name="breakLine" xsi:type="boolean">false</item>
+                    <item name="componentType" xsi:type="string">container</item>
+                    <item name="component" xsi:type="string">Magento_Ui/js/form/components/group</item>
+                    <item name="additionalClasses" xsi:type="string">container-attachment-info</item>
                 </item>
             </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label>File Name</label>
-            </settings>
-        </field>
+            <field name="file_name" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">attachment_form</item>
+                        <item name="dataScope" xsi:type="string">file_name</item>
+                    </item>
+                </argument>
+                <settings>
+                    <dataType>text</dataType>
+                    <label>File Name</label>
+                </settings>
+            </field>
+            <field name="file_extension" formElement="input">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="source" xsi:type="string">attachment_form</item>
+                        <item name="dataScope" xsi:type="string">file_extension</item>
+                        <item name="disabled" xsi:type="boolean">true</item>
+                    </item>
+                </argument>
+            </field>
+        </container>
+
         <field name="file_label" formElement="input">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="dataScope" xsi:type="string">file_label</item>
                     <item name="source" xsi:type="string">attachment_form</item>
                 </item>
             </argument>
@@ -106,6 +129,7 @@
                 <dataType>number</dataType>
                 <label translate="true">Customer Groups</label>
                 <dataScope>customer_group_ids</dataScope>
+                <notice>Don't choose any or select all to show attachment to all groups</notice>
             </settings>
             <formElements>
                 <multiselect>
@@ -148,6 +172,7 @@
             <settings>
                 <dataType>boolean</dataType>
                 <label translate="true">Include on Order</label>
+                <notice>Include this attachment into order transaction email and show in the view order section of customer's account</notice>
             </settings>
             <formElements>
                 <checkbox>
