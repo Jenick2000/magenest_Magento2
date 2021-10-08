@@ -1,0 +1,31 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Catalog\Model\Product;
+use Magenest\Attachments\Block\Product\View\Type\Course;
+
+
+/** @var Course $block */
+/** @var Product $product */
+$product = $block->getProduct();
+?>
+<h3>Course Timeline</h3>
+<div class="content-timeline">
+    <table class="timeline-table">
+        <tr>
+            <th>Time From</th>
+            <th>Time To</th>
+            <th>Quantity</th>
+        </tr>
+        <?php foreach ($product->getData('timeline') as $timeline): ?>
+            <tr>
+                <td><?= $timeline['time_from'] ?? '' ?></td>
+                <td><?= $timeline['time_to'] ?? '' ?></td>
+                <td><?= $timeline['quantity'] ?? '' ?></td>
+            </tr>
+        <?php endforeach; ?>
+
+    </table>

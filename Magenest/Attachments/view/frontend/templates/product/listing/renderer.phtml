@@ -1,0 +1,74 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Catalog\Model\Product;
+use Magenest\Attachments\Block\Product\View\Type\Course;
+
+
+/** @var Course $block */
+/** @var Product $product */
+$product = $block->getProduct();
+
+$attachment = $block->getInfoAttachment($product->getDocument());
+?>
+<?php if($attachment) : ?>
+    <div class="attachment">
+        <a href="<?= $attachment->getPath()[0]['url'] ?>" download> <?= $attachment->getFileLabel() ?></a>
+    </div>
+<?php endif; ?>
+<div class="product course-timeline" >
+    <span id="course_timeline_<?= $product->getId() ?>" >Course Timeline</span>
+    <div id="popup-modal-<?= $product->getId() ?>" >
+        <h3>Course Timeline</h3>
+        <div class="content-timeline">
+            <table class="timeline-table">
+                <tr>
+                    <th>Time From</th>
+                    <th>Time To</th>
+                    <th>Quantity</th>
+                </tr>
+                <?php foreach ($block->getCourseTimeline($product) as $timeline): ?>
+                <tr>
+                    <td><?= $timeline['time_from'] ?? '' ?></td>
+                    <td><?= $timeline['time_to'] ?? '' ?></td>
+                    <td><?= $timeline['quantity'] ?? '' ?></td>
+                </tr>
+                <?php endforeach; ?>
+
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('#popup-modal-<?= $product->getId()?>'));
+            $("#course_timeline_<?= $product->getId() ?>").on('click',function(){
+                debugger
+                $("#popup-modal-<?= $product->getId()?>").modal("openModal");
+            });
+        }
+    );
+</script>

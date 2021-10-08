@@ -1,0 +1,11 @@
+<?php
+/** @var Magenest\Attachments\Block\Cart\Additional $block */
+$_item = $block->getItem();
+$product = $_item->getProduct();
+$attachment = $block->getInfoAttachment($product->getDocument());
+?>
+<?php if($attachment) : ?>
+    <div class="product-brand">
+        <a href="<?= $attachment->getPath()[0]['url'] ?>" download> <?= $attachment->getFileLabel() ?></a>
+    </div>
+<?php endif; ?>

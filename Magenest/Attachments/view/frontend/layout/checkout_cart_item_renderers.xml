@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<update handle="checkout_item_price_renderers"/>
+<body>
+    <referenceBlock name="checkout.cart.item.renderers">
+        <referenceBlock name="checkout.cart.item.renderers.default" template="Magenest_Attachments::cart/item/default.phtml" />
+        <referenceBlock name="checkout.cart.item.renderers.simple" template="Magenest_Attachments::cart/item/default.phtml" />
+        <referenceBlock name="checkout.cart.item.renderers.bundle" template="Magenest_Attachments::cart/item/default.phtml" />
+        <referenceBlock name="checkout.cart.item.renderers.configurable" template="Magenest_Attachments::cart/item/default.phtml" />
+        <referenceBlock name="checkout.cart.item.renderers.virtual" template="Magenest_Attachments::cart/item/default.phtml" />
+        <referenceBlock name="checkout.cart.item.renderers.grouped" template="Magenest_Attachments::cart/item/default.phtml" />
+        <referenceBlock name="checkout.cart.item.renderers.downloadable" template="Magenest_Attachments::cart/item/default.phtml" />
+    </referenceBlock>
+</body>
+</page>

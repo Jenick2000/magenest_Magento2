@@ -1,0 +1,19 @@
+<script>
+    require(['jquery'], function ($) {
+        $('.btn-qty-update').click(function(){
+            var obj = $(this);
+            var currentQty = obj.siblings('input').val();
+
+            if(obj.hasClass('incre')){
+                currentQty = parseInt(currentQty) + 1;
+                obj.siblings('input').val(currentQty);
+            }else {
+                if (parseInt(currentQty) > 1) {
+                    var newAdd = parseInt(currentQty) - 1;
+                    obj.siblings('input').val(newAdd);
+                }
+            }
+        });
+
+    });
+</script>

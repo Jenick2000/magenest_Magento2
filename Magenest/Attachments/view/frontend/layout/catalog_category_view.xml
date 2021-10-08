@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="category.product.type.details.renderers">
+            <block class="Magenest\Attachments\Block\Product\View\Type\Course"
+                   name="category.product.type.details.renderers.course" as="course"
+                   template="Magenest_Attachments::product/listing/renderer.phtml">
+            </block>
+        </referenceBlock>
+    </body>
+</page>

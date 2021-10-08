@@ -64,7 +64,7 @@ class CourseTypeAttribute implements DataPatchInterface
                 'filterable' => false,
                 'comparable' => false,
                 'visible_on_front' => false,
-                'used_in_product_listing' => false,
+                'used_in_product_listing' => true,
                 'unique' => false,
                 'apply_to'=> Course::TYPE_CODE
             ]
@@ -89,7 +89,7 @@ class CourseTypeAttribute implements DataPatchInterface
                 'filterable' => false,
                 'comparable' => false,
                 'visible_on_front' => false,
-                'used_in_product_listing' => false,
+                'used_in_product_listing' => true,
                 'unique' => false,
                 'apply_to'=> Course::TYPE_CODE
             ]

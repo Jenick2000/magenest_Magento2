@@ -1,0 +1,21 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magento\Catalog\Model\Product;
+use Magenest\Attachments\Block\Product\View\Type\Course;
+
+
+/** @var Course $block */
+/** @var Product $product */
+$product = $block->getProduct();
+
+$attachment = $block->getInfoAttachment($product->getDocument());
+?>
+<?php if($attachment) : ?>
+    <div class="attachment">
+        <a href="<?= $attachment->getPath()[0]['url'] ?>" download> <?= $attachment->getFileLabel() ?></a>
+    </div>
+<?php endif; ?>
